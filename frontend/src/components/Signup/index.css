@@ -1,0 +1,93 @@
+.signup-container {
+    width: 60%;
+    margin: 40px auto 0 auto;
+}
+.signup-container form table {
+    margin: 0 auto;
+    width: 100%;
+}
+.signup-form-labels {
+    width: 170px;
+    text-align: right;
+    padding: 12px 5px;
+}
+.signup-form-inputs {
+    text-align: left;
+}
+.signup-form-inputs input{
+    width: 82%;
+    margin-left: 20px;
+    height: 31px;
+    outline: none;
+    border: none;
+    padding: 0px 10px;
+    background-color: #F4F4F4;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.signup-btn {
+    margin-top: 20px;
+    width: 39%;
+    padding: 5px 0px;
+    border-radius: 7px;
+    outline: none;
+    border: none;
+    font-weight: 550;
+    font-size: 1rem;
+    color: #474444;
+    background-color: #A9BCFF;
+}
+
+.signup-btn:hover{
+    transform:scale(1.05,1.05);
+}
+
+#signup-tool-tip {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 5px;
+    left: 4px;
+}
+#signup-tool-tip img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    font-size: 8px;
+    font-weight: 400;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
