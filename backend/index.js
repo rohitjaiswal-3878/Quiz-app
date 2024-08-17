@@ -1,14 +1,54 @@
 const express = require("express");
 const app = express();
+const { connectToDatabase } = require("./config/db");
+const bodyParser = require("body-parser");
+const authRoutes = require("./routes/auth");
+const fs = require("fs");
 const port = process.env.PORT || 3001;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+// parsing the request body.
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Storing requests in log.txt file
+app.use((req, res, next) => {
+  let log = `${req.method} - ${req.url} - ${new Date()}\n`;
+  fs.appendFile("log.txt", log, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+  next();
 });
 
-// Server listening on specified port.
-app.listen(port, (err) => {
-  if (!err) {
-    console.log(`Server is up on port ${port}.`);
-  }
+// Using routes
+app.use("/auth", authRoutes);
+
+// error handling middleware
+app.use((err, req, res, next) => {
+  let log =
+    `\n${req.method} - ${req.url} - ${req.ip} - ${new Date()}\n` + err.stack;
+  fs.appendFile("error.txt", log, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+
+  res.status(500).json({ message: "server down", err });
 });
+
+// Connnecting to mongoDB and starting the server.
+connectToDatabase().then(
+  (data) => {
+    // Server listening on specified port.
+    app.listen(port, (err) => {
+      if (!err) {
+        console.log(`Server is up on port ${port}.`);
+      }
+    });
+    console.log(data);
+  },
+  (err) => {
+    console.log(err);
+  }
+);

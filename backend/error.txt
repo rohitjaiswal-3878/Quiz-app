@@ -1,0 +1,13 @@
+
+GET - /auth/login - ::1 - Sat Aug 17 2024 16:25:43 GMT+0530 (India Standard Time)
+undefined
+GET - /auth/login - ::1 - Sat Aug 17 2024 16:35:14 GMT+0530 (India Standard Time)
+undefined
+GET - /auth/login - ::1 - Sat Aug 17 2024 16:38:54 GMT+0530 (India Standard Time)
+undefined
+POST - /auth/register - ::1 - Sat Aug 17 2024 16:41:57 GMT+0530 (India Standard Time)
+ValidationError: User validation failed: name: Path `name` is required., email: Path `email` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
