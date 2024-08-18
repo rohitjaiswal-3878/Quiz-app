@@ -3,16 +3,20 @@ import "./index.css";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import MyModal from "../../components/MyModal";
+import CreateQuiz from "../../components/CreateQuiz";
 
 function Homepage() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [showModal, setShowModal] = useState(false);
   const [selected, setSelected] = useState({
     dashboard: location.pathname == "/homepage/dashboard" ? true : false,
     analytics: location.pathname == "/homepage/analytics" ? true : false,
-    createQuiz: location.pathname == "/homepage/create" ? true : false,
+    createQuiz: false,
   });
 
+  // Handles button click
   const handleButtonClick = (e) => {
     const text = e.target.innerText;
 
@@ -31,15 +35,16 @@ function Homepage() {
         createQuiz: false,
       });
     } else if (text == "Create Quiz") {
-      navigate("/homepage/create");
       setSelected({
         dashboard: false,
         analytics: false,
         createQuiz: true,
       });
+      setShowModal(true);
     }
   };
 
+  // Checks for token
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -47,8 +52,24 @@ function Homepage() {
     }
   }, []);
 
+  // Quiz modal
+  const onClose = () => {
+    setShowModal(false);
+    setSelected({
+      dashboard: location.pathname == "/homepage/dashboard" ? true : false,
+      analytics: location.pathname == "/homepage/analytics" ? true : false,
+      createQuiz: false,
+    });
+  };
+  const createQuiz = (
+    <MyModal onClose={onClose}>
+      <CreateQuiz onClose={onClose} />
+    </MyModal>
+  );
+
   return (
     <div className="homepage-container">
+      {/* Menu */}
       <div className="homepage-menu">
         <h1 className="homepage-menu-heading">Quizzie</h1>
         <ul className="homepage-menu-options">
@@ -83,8 +104,10 @@ function Homepage() {
           </span>
         </div>
       </div>
+      {/* Container */}
       <div className="homepage-body">
         <Outlet />
+        {showModal && createQuiz}
       </div>
     </div>
   );
