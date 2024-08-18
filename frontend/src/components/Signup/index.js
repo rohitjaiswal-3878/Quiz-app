@@ -3,11 +3,8 @@ import "./index.css";
 import { useState } from "react";
 import toolTip from "../../assets/tool-tip.png";
 import { registerUser } from "../../apis/auth";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 function Signup({ setToggleBtn }) {
-  const navigate = useNavigate();
   const [sigupMessage, setSignupMessage] = useState({
     message: "",
     color: "",
@@ -146,14 +143,6 @@ function Signup({ setToggleBtn }) {
     const name = e.target.name;
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
-
-  // If token exists redirect to dashboard page.
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      navigate("/dashboard");
-    }
-  }, []);
 
   return (
     <div className="signup-container">

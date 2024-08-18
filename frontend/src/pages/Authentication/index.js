@@ -3,13 +3,17 @@ import "./index.css";
 import { useState } from "react";
 import Signup from "../../components/Signup";
 import Login from "../../components/Login";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Authentication() {
+  const navigate = useNavigate();
   const [toggleBtn, setToggleBtn] = useState({
     signUp: true,
     login: false,
   });
 
+  // Handle toggle of signup and login button
   const handleToggle = (e) => {
     e.preventDefault();
     if (e.target.innerText == "Sign Up") {
@@ -18,6 +22,14 @@ function Authentication() {
       setToggleBtn({ signUp: false, login: true });
     }
   };
+
+  // If token exists redirect to dashboard page.
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/homepage");
+    }
+  }, []);
 
   return (
     <div className="authentication">

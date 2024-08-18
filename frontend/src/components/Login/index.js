@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./index.css";
 import { useState } from "react";
 import { loginUser } from "../../apis/auth";
@@ -61,7 +61,7 @@ function Login() {
           msg.message = response.data.message;
           msg.color = "green";
           setTimeout(() => {
-            navigate("/dashboard");
+            navigate("/homepage/dashboard");
           }, 500);
         } else if (response.status == 400) {
           msg.message = response.data.message;
