@@ -41,7 +41,7 @@ function Authentication() {
             Log In
           </div>
         </div>
-        {toggleBtn.signUp ? <Signup /> : <Login />}
+        {toggleBtn.signUp ? <Signup setToggleBtn={setToggleBtn} /> : <Login />}
       </div>
     </div>
   );

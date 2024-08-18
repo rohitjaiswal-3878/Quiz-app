@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.css";
 import { useState } from "react";
+import { loginUser } from "../../apis/auth";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+  const [loginMessage, setLoginMessage] = useState({
+    message: "",
+    color: "",
+  });
   const [requested, setRequested] = useState(false);
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -14,15 +20,18 @@ function Login() {
     password: "",
   });
 
+  // Handle form input
   const handleFormInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleFormSubmit = (e) => {
+  // handle form submit
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     let err = 0;
+
     // email validation
     if (formData.email == "") {
       err++;
@@ -39,11 +48,35 @@ function Login() {
       setErrors((prev) => ({ ...prev, password: "" }));
     }
 
+    // Submitting the form if no error found.
     if (err == 0) {
       setRequested(!requested);
+      const response = await loginUser(formData);
+      let msg = { message: "", color: "" };
+
+      if (response) {
+        setRequested(false);
+        if (response.status == 200) {
+          localStorage.setItem("token", response.headers["auth-token"]);
+          msg.message = response.data.message;
+          msg.color = "green";
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 500);
+        } else if (response.status == 400) {
+          msg.message = response.data.message;
+          msg.color = "red";
+        } else if (response.status == 500) {
+          msg.message = response.data.message;
+          msg.color = "red";
+        }
+      }
+
+      setLoginMessage(msg);
     }
   };
 
+  // Removing the error if we click on inputs.
   const handleInputClick = (e) => {
     const name = e.target.name;
     setErrors((prev) => ({ ...prev, [name]: "" }));
@@ -118,6 +151,17 @@ function Login() {
           )}
         </button>
       </form>
+      {/* Message */}
+      <div
+        className="login-message"
+        style={{
+          color: `${loginMessage.color && loginMessage.color}`,
+          marginTop: "8px",
+          fontSize: "0.9rem",
+        }}
+      >
+        {loginMessage.message}
+      </div>
     </div>
   );
 }

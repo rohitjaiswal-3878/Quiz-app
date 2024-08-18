@@ -2,8 +2,16 @@ import React from "react";
 import "./index.css";
 import { useState } from "react";
 import toolTip from "../../assets/tool-tip.png";
+import { registerUser } from "../../apis/auth";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-function Signup() {
+function Signup({ setToggleBtn }) {
+  const navigate = useNavigate();
+  const [sigupMessage, setSignupMessage] = useState({
+    message: "",
+    color: "",
+  });
   const [requested, setRequested] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -19,15 +27,18 @@ function Signup() {
     confirmPassword: "",
   });
 
+  // Handles form input
   const handleFormChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  // Handle form submit
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let err = 0;
+
     // Name validation
     if (formData.name == "") {
       err++;
@@ -70,7 +81,6 @@ function Signup() {
       )
     ) {
       err++;
-
       if (formData.password.length < 8) {
         setErrors((prev) => ({
           ...prev,
@@ -103,19 +113,52 @@ function Signup() {
       setErrors((prev) => ({ ...prev, confirmPassword: "" }));
     }
 
+    // Submitting the form if no error found.
     if (err == 0) {
       setRequested(!requested);
+      const response = await registerUser(formData);
+      let msg = { message: "", color: "" };
+      if (response) {
+        setRequested(false);
+        if (response.status == 200) {
+          msg.message = response.data.message;
+          msg.color = "green";
+          setTimeout(() => {
+            setToggleBtn({
+              signUp: false,
+              login: true,
+            });
+          }, 1500);
+        } else if (response.status == 400) {
+          msg.message = response.data.message;
+          msg.color = "red";
+        } else if (response.status == 500) {
+          msg.message = response.data.message;
+          msg.color = "red";
+        }
+      }
+      setSignupMessage(msg);
     }
   };
 
+  // Removing the error if we click on inputs.
   const handleInputClick = (e) => {
     const name = e.target.name;
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
+  // If token exists redirect to dashboard page.
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/dashboard");
+    }
+  }, []);
+
   return (
     <div className="signup-container">
       <form onSubmit={handleSubmit}>
+        {/* sign-up form */}
         <table>
           <tbody>
             <tr>
@@ -219,6 +262,7 @@ function Signup() {
             </tr>
           </tbody>
         </table>
+        {/* Sign-up button */}
         <button
           className="signup-btn"
           type="submit"
@@ -241,6 +285,17 @@ function Signup() {
           )}
         </button>
       </form>
+      {/* Message */}
+      <div
+        className="signup-message"
+        style={{
+          color: `${sigupMessage.color && sigupMessage.color}`,
+          marginTop: "5px",
+          fontSize: "0.9rem",
+        }}
+      >
+        {sigupMessage.message}
+      </div>
     </div>
   );
 }

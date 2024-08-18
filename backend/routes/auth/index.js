@@ -33,13 +33,13 @@ router.post("/register", async (req, res, next) => {
 });
 
 // Route for Logging in.
-router.get("/login", async (req, res, next) => {
+router.post("/login", async (req, res, next) => {
   try {
     // Getting data and checking whether user exists in DB or not.
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      res.status(400).json({ message: "Wrong email or password!" });
+      return res.status(400).json({ message: "Wrong email or password!" });
     }
 
     // Validating the password

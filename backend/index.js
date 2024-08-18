@@ -4,7 +4,16 @@ const { connectToDatabase } = require("./config/db");
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/auth");
 const fs = require("fs");
+const cors = require("cors");
 const port = process.env.PORT || 3001;
+
+// cors
+app.use(
+  cors({
+    origin: "*",
+    exposedHeaders: "auth-token",
+  })
+);
 
 // parsing the request body.
 app.use(bodyParser.json());
@@ -34,7 +43,10 @@ app.use((err, req, res, next) => {
     }
   });
 
-  res.status(500).json({ message: "server down", err });
+  res.status(500).json({
+    message: "Something went wrong on server! Try after sometime.",
+    err,
+  });
 });
 
 // Connnecting to mongoDB and starting the server.
