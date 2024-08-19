@@ -1,3 +1,5 @@
 /node_modules
 .env
 secure.txt
+error.txt
+log.txt

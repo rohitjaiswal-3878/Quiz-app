@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const authRoutes = require("./routes/auth");
 const fs = require("fs");
 const cors = require("cors");
+const quizRoutes = require("./routes/quiz");
+const authMiddleware = require("./middlewares/authMiddleware");
 const port = process.env.PORT || 3001;
 
 // cors
@@ -12,6 +14,7 @@ app.use(
   cors({
     origin: "*",
     exposedHeaders: "auth-token",
+    "Access-Control-Allow-Headers": "*",
   })
 );
 
@@ -32,6 +35,7 @@ app.use((req, res, next) => {
 
 // Using routes
 app.use("/auth", authRoutes);
+app.use("/quiz", authMiddleware, quizRoutes);
 
 // error handling middleware
 app.use((err, req, res, next) => {
