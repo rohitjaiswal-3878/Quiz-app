@@ -6,7 +6,7 @@ const User = require("../models/User");
 const authMiddleware = async (req, res, next) => {
   try {
     const token = req.header("token");
-    console.log(token);
+
     if (!token) {
       return res.status(400).json({ message: "Access forbidden!" });
     } else {

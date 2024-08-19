@@ -33,3 +33,13 @@ TypeError: Cannot read properties of undefined (reading 'save')
     at next (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:280:10)
     at Function.handle (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:175:3)
     at router (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:47:12)
+PATCH - /quiz/edit/66c3207b6eb9d817d21e9914 - ::1 - Mon Aug 19 2024 20:18:16 GMT+0530 (India Standard Time)
+RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: { message: 'Quiz updated successfully!!' }
+    at ServerResponse.writeHead (node:_http_server:352:11)
+    at ServerResponse._implicitHeader (node:_http_server:338:8)
+    at write_ (node:_http_outgoing:945:9)
+    at ServerResponse.end (node:_http_outgoing:1056:5)
+    at ServerResponse.send (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\response.js:233:10)
+    at ServerResponse.json (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\response.js:279:15)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:71:8
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
