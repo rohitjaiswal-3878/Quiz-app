@@ -1,6 +1,8 @@
 .create-container {
-    padding: 30px;
     font-family: "Poppins", sans-serif;
+}
+.create-quiz {
+    padding: 30px;
 }
 
 .create-container #quiz-name {
@@ -33,32 +35,5 @@
     width: 100px;
     box-shadow: 0px 0px 14.5px rgba(0, 0, 0, 0.2); 
     cursor: pointer;    
-}
-
-.quiz-buttons {
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.quiz-buttons button{
-    width: 40%;
-    padding: 6px 0px;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    background-color: white;
-    font-weight: 550;
-    box-shadow: 0px 0px 14.5px rgba(0, 0, 0, 0.2);  
-    cursor: pointer;
-}
-.quiz-buttons button:hover{
-    transform: scale(1.05,1.05);
-}
-
-.quiz-buttons .quiz-continue-btn {
-    background-color: #60B84B;
-    color: white;
 }
 

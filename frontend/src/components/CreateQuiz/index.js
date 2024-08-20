@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./index.css";
+import QAquiz from "../QAquiz";
+import CancelBtn from "../../utils/CancelBtn";
 
 function CreateQuiz({ onClose }) {
   const [createQuiz, setCreateQuiz] = useState({
@@ -8,6 +10,11 @@ function CreateQuiz({ onClose }) {
   });
 
   const [createQuizErrors, setCreateQuizErrors] = useState("");
+  const [showQuizModals, setShowQuizModals] = useState({
+    qaQuiz: false,
+    pollQuiz: false,
+    cQuiz: true,
+  });
 
   // handle input change.
   const handleChange = (e) => {
@@ -35,67 +42,97 @@ function CreateQuiz({ onClose }) {
     } else {
       setCreateQuizErrors("");
     }
+
+    // If no error found
+    if (err == 0) {
+      if (createQuiz.quizType == "qa") {
+        setShowQuizModals({
+          qaQuiz: true,
+          pollQuiz: false,
+          cQuiz: false,
+        });
+      } else {
+        setShowQuizModals({
+          qaQuiz: false,
+          pollQuiz: true,
+          cQuiz: false,
+        });
+      }
+    }
   };
 
+  // JSX for adding quiz type and name.
   const selectQuizType = (
     <>
-      <input
-        type="text"
-        placeholder="Quiz name"
-        name="quizName"
-        id="quiz-name"
-        onChange={handleChange}
-      />
-      <div className="quiz-type">
-        <span>Quiz Type</span>
+      <div className="create-quiz">
+        <input
+          type="text"
+          placeholder="Quiz name"
+          name="quizName"
+          id="quiz-name"
+          onChange={handleChange}
+        />
+        <div className="quiz-type">
+          <span>Quiz Type</span>
 
-        <span
-          data-name="quizType"
-          className="quiz-type-options"
-          data-value="qa"
-          onClick={handleChange}
+          <span
+            data-name="quizType"
+            className="quiz-type-options"
+            data-value="qa"
+            onClick={handleChange}
+            style={{
+              background: `${createQuiz.quizType == "qa" ? "#60B84B" : ""}`,
+              color: `${createQuiz.quizType == "qa" ? "white" : ""}`,
+            }}
+          >
+            Q & A
+          </span>
+          <span
+            data-name="quizType"
+            className="quiz-type-options"
+            data-value="poll"
+            onClick={handleChange}
+            style={{
+              background: `${createQuiz.quizType == "poll" ? "#60B84B" : ""}`,
+              color: `${createQuiz.quizType == "poll" ? "white" : ""}`,
+            }}
+          >
+            Poll Type
+          </span>
+        </div>
+        <CancelBtn onClose={onClose} handleSubmit={handleSubmit}>
+          <span>Cancel</span>
+          <span>Continue</span>
+        </CancelBtn>
+        <div
+          className="quiz-message"
           style={{
-            background: `${createQuiz.quizType == "qa" ? "#60B84B" : ""}`,
-            color: `${createQuiz.quizType == "qa" ? "white" : ""}`,
+            color: "red",
+            textAlign: "center",
+            marginTop: "5px",
+            fontSize: "0.8rem",
           }}
         >
-          Q & A
-        </span>
-        <span
-          data-name="quizType"
-          className="quiz-type-options"
-          data-value="poll"
-          onClick={handleChange}
-          style={{
-            background: `${createQuiz.quizType == "poll" ? "#60B84B" : ""}`,
-            color: `${createQuiz.quizType == "poll" ? "white" : ""}`,
-          }}
-        >
-          Poll Type
-        </span>
-      </div>
-      <div className="quiz-buttons">
-        <button className="quiz-cancel-btn" onClick={onClose}>
-          Cancel
-        </button>
-        <button className="quiz-continue-btn" onClick={handleSubmit}>
-          Continue
-        </button>
-      </div>
-      <div
-        className="quiz-message"
-        style={{
-          color: "red",
-          textAlign: "center",
-          marginTop: "5px",
-          fontSize: "0.8rem",
-        }}
-      >
-        {createQuizErrors}
+          {createQuizErrors}
+        </div>
       </div>
     </>
   );
-  return <div className="create-container">{selectQuizType}</div>;
+
+  // JSX for adding questions in quiz.
+  const qaQuestions = <QAquiz />;
+
+  return (
+    <div className="create-container">
+      {showQuizModals.cQuiz
+        ? selectQuizType
+        : showQuizModals.qaQuiz
+        ? qaQuestions
+        : showQuizModals.pollQuiz
+        ? "yes"
+        : "no"}
+    </div>
+  );
 }
 
 export default CreateQuiz;
