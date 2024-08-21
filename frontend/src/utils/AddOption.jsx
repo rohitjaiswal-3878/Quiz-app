@@ -1,7 +1,11 @@
 import React from "react";
 
-function AddOption() {
-  return <button className="add-option-btn">Add option</button>;
+function AddOption({ handleClick }) {
+  return (
+    <button className="add-option-btn" onClick={handleClick}>
+      Add option
+    </button>
+  );
 }
 
 export default AddOption;

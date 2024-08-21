@@ -115,3 +115,8 @@ DELETE - /quiz/remove/66c3517e7503afd90a1c19a6 - Mon Aug 19 2024 19:54:10 GMT+05
 DELETE - /quiz/remove/66c3517e7503afd90a1c19a6 - Mon Aug 19 2024 19:55:12 GMT+0530 (India Standard Time)
 PATCH - /quiz/edit/66c3207b6eb9d817d21e9914 - Mon Aug 19 2024 20:18:08 GMT+0530 (India Standard Time)
 PATCH - /quiz/edit/66c3207b6eb9d817d21e9914 - Mon Aug 19 2024 20:20:47 GMT+0530 (India Standard Time)
+POST - /auth/login - Tue Aug 20 2024 10:56:40 GMT+0530 (India Standard Time)
+POST - /auth/login - Tue Aug 20 2024 10:57:00 GMT+0530 (India Standard Time)
+POST - /auth/login - Tue Aug 20 2024 10:57:13 GMT+0530 (India Standard Time)
+POST - /auth/login - Tue Aug 20 2024 21:08:42 GMT+0530 (India Standard Time)
+POST - /auth/login - Wed Aug 21 2024 00:55:10 GMT+0530 (India Standard Time)

@@ -5,8 +5,9 @@ import CancelBtn from "../../utils/CancelBtn";
 
 function CreateQuiz({ onClose }) {
   const [createQuiz, setCreateQuiz] = useState({
-    quizName: "",
-    quizType: "",
+    name: "",
+    type: "",
+    questions: [],
   });
 
   const [createQuizErrors, setCreateQuizErrors] = useState("");
@@ -19,9 +20,9 @@ function CreateQuiz({ onClose }) {
   // handle input change.
   const handleChange = (e) => {
     if (e.target.name || e.target.value) {
-      setCreateQuiz({ ...createQuiz, quizName: e.target.value });
+      setCreateQuiz({ ...createQuiz, name: e.target.value });
     } else {
-      setCreateQuiz({ ...createQuiz, quizType: e.target.dataset.value });
+      setCreateQuiz({ ...createQuiz, type: e.target.dataset.value });
     }
   };
 
@@ -30,13 +31,13 @@ function CreateQuiz({ onClose }) {
     let err = 0;
 
     // error handling
-    if (createQuiz.quizName == "" && createQuiz.quizType == "") {
+    if (createQuiz.name == "" && createQuiz.type == "") {
       err++;
       setCreateQuizErrors("Quiz name and quiz type is required.");
-    } else if (createQuiz.quizName == "") {
+    } else if (createQuiz.name == "") {
       err++;
       setCreateQuizErrors("Quiz name is required.");
-    } else if (createQuiz.quizType == "") {
+    } else if (createQuiz.type == "") {
       err++;
       setCreateQuizErrors("Quiz type is required.");
     } else {
@@ -45,7 +46,7 @@ function CreateQuiz({ onClose }) {
 
     // If no error found
     if (err == 0) {
-      if (createQuiz.quizType == "qa") {
+      if (createQuiz.type == "qa") {
         setShowQuizModals({
           qaQuiz: true,
           pollQuiz: false,
@@ -76,25 +77,25 @@ function CreateQuiz({ onClose }) {
           <span>Quiz Type</span>
 
           <span
-            data-name="quizType"
+            data-name="type"
             className="quiz-type-options"
             data-value="qa"
             onClick={handleChange}
             style={{
-              background: `${createQuiz.quizType == "qa" ? "#60B84B" : ""}`,
-              color: `${createQuiz.quizType == "qa" ? "white" : ""}`,
+              background: `${createQuiz.type == "qa" ? "#60B84B" : ""}`,
+              color: `${createQuiz.type == "qa" ? "white" : ""}`,
             }}
           >
             Q & A
           </span>
           <span
-            data-name="quizType"
+            data-name="type"
             className="quiz-type-options"
             data-value="poll"
             onClick={handleChange}
             style={{
-              background: `${createQuiz.quizType == "poll" ? "#60B84B" : ""}`,
-              color: `${createQuiz.quizType == "poll" ? "white" : ""}`,
+              background: `${createQuiz.type == "poll" ? "#60B84B" : ""}`,
+              color: `${createQuiz.type == "poll" ? "white" : ""}`,
             }}
           >
             Poll Type
@@ -120,7 +121,7 @@ function CreateQuiz({ onClose }) {
   );
 
   // JSX for adding questions in quiz.
-  const qaQuestions = <QAquiz />;
+  const qaQuestions = <QAquiz onClose={onClose} quiz={createQuiz} />;
 
   return (
     <div className="create-container">
