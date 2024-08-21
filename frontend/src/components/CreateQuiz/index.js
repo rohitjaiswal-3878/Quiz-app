@@ -1,7 +1,10 @@
 import { useState } from "react";
 import "./index.css";
 import QAquiz from "../QAquiz";
-import CancelBtn from "../../utils/CancelBtn";
+import ModalBtn from "../../utils/ModalBtn";
+import bigCross from "../../assets/big-cross.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CreateQuiz({ onClose }) {
   const [createQuiz, setCreateQuiz] = useState({
@@ -15,6 +18,7 @@ function CreateQuiz({ onClose }) {
     qaQuiz: false,
     pollQuiz: false,
     cQuiz: true,
+    complete: false,
   });
 
   // handle input change.
@@ -51,12 +55,14 @@ function CreateQuiz({ onClose }) {
           qaQuiz: true,
           pollQuiz: false,
           cQuiz: false,
+          complete: false,
         });
       } else {
         setShowQuizModals({
           qaQuiz: false,
           pollQuiz: true,
           cQuiz: false,
+          complete: false,
         });
       }
     }
@@ -72,6 +78,7 @@ function CreateQuiz({ onClose }) {
           name="quizName"
           id="quiz-name"
           onChange={handleChange}
+          autoComplete="off"
         />
         <div className="quiz-type">
           <span>Quiz Type</span>
@@ -101,10 +108,10 @@ function CreateQuiz({ onClose }) {
             Poll Type
           </span>
         </div>
-        <CancelBtn onClose={onClose} handleSubmit={handleSubmit}>
+        <ModalBtn onClose={onClose} handleSubmit={handleSubmit}>
           <span>Cancel</span>
           <span>Continue</span>
-        </CancelBtn>
+        </ModalBtn>
         <div
           className="quiz-message"
           style={{
@@ -120,8 +127,50 @@ function CreateQuiz({ onClose }) {
     </>
   );
 
-  // JSX for adding questions in quiz.
-  const qaQuestions = <QAquiz onClose={onClose} quiz={createQuiz} />;
+  // handle api request to create quiz
+  const registerQuiz = () => {
+    setShowQuizModals({
+      qaQuiz: false,
+      pollQuiz: false,
+      cQuiz: false,
+      complete: true,
+    });
+  };
+  // JSX for adding questions in quiz. (Q & A)
+  const qaQuestions = (
+    <QAquiz
+      onClose={onClose}
+      quiz={createQuiz}
+      setCreateQuiz={setCreateQuiz}
+      registerQuiz={registerQuiz}
+    />
+  );
+
+  // JSX for adding questions in quiz. (Poll)
+  const pollQuestions = (
+    <QAquiz
+      onClose={onClose}
+      quiz={createQuiz}
+      setCreateQuiz={setCreateQuiz}
+      registerQuiz={registerQuiz}
+    />
+  );
+
+  // JSX for quiz created message
+  const completeQuizCreation = (
+    <div className="quiz-created">
+      <h2>Congrats your Quiz is Published!</h2>
+      <input type="text" readOnly value="link" className="quiz-created-link" />
+      <button
+        onClick={() => toast.success("Link copied to clipboard")}
+        className="quiz-created-share"
+      >
+        Share
+      </button>
+      <img src={bigCross} alt="cross" onClick={onClose} />
+      <ToastContainer limit={1} autoClose={2000} />
+    </div>
+  );
 
   return (
     <div className="create-container">
@@ -130,8 +179,10 @@ function CreateQuiz({ onClose }) {
         : showQuizModals.qaQuiz
         ? qaQuestions
         : showQuizModals.pollQuiz
-        ? "yes"
-        : "no"}
+        ? pollQuestions
+        : showQuizModals.complete
+        ? completeQuizCreation
+        : ""}
     </div>
   );
 }

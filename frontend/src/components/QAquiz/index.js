@@ -4,9 +4,9 @@ import crossIcon from "../../assets/cross.png";
 import plusIcon from "../../assets/plus.png";
 import Text from "../../utils/Text";
 import AddOption from "../../utils/AddOption";
-import CancelBtn from "../../utils/CancelBtn";
+import ModalBtn from "../../utils/ModalBtn";
 
-function QAquiz({ onClose, quiz }) {
+function QAquiz({ onClose, quiz, setCreateQuiz, registerQuiz }) {
   const [selQuestion, setSelQuestion] = useState(0);
   const [selOption, setSelOption] = useState(0);
   const [error, setError] = useState("");
@@ -35,7 +35,8 @@ function QAquiz({ onClose, quiz }) {
     if (handleError() == 0) {
       setError("");
       quiz.questions = totalQuestions;
-      console.log(quiz);
+      setCreateQuiz({ ...quiz });
+      registerQuiz();
     }
   };
 
@@ -47,7 +48,7 @@ function QAquiz({ onClose, quiz }) {
     let question = totalQuestions[selQuestion];
     let ansSel = false;
     question.options.forEach((opt, index) => {
-      if (opt.answer == "right") ansSel = true;
+      if (opt.answer == "right" && quiz.type == "qa") ansSel = true;
       if (opt.imageURL == "" && opt.text == "") {
         errMsg = "Please fill the options to proceed!";
       }
@@ -59,7 +60,10 @@ function QAquiz({ onClose, quiz }) {
     } else if (errMsg && ansSel) {
       err++;
       setError(errMsg);
-    } else if (!ansSel) {
+    } else if (errMsg && quiz.type == "poll") {
+      err++;
+      setError(errMsg);
+    } else if (!ansSel && quiz.type == "qa") {
       err++;
       setError("Please select answer to proceed!");
     }
@@ -69,6 +73,7 @@ function QAquiz({ onClose, quiz }) {
 
   // handles question selecting
   const handleSelectedQuestion = (index) => {
+    setError("");
     setSelQuestion(index);
   };
 
@@ -188,6 +193,7 @@ function QAquiz({ onClose, quiz }) {
 
   return (
     <div className="qa-quiz-container">
+      {/* creating new questions */}
       <div className="qa-quiz-heading">
         <div className="qa-no-of-questions">
           <ul className="qa-questions">
@@ -238,14 +244,16 @@ function QAquiz({ onClose, quiz }) {
         </div>
         <span className="qa-questions-limit">Max 5 questions</span>
       </div>
+      {/* Adding name and type to question */}
       <div className="qa-quiz-name-type">
         <input
           type="text"
-          placeholder="Poll Question"
+          placeholder={quiz.type == "qa" ? "Q&A Question" : "Poll Question"}
           id="qa-quiz-name"
           name="content"
           value={totalQuestions[selQuestion].content}
           onChange={handleQuestionDetails}
+          autoComplete="off"
         />
         <div className="qa-quiz-options">
           <span>Option type</span>
@@ -292,12 +300,14 @@ function QAquiz({ onClose, quiz }) {
           </div>
         </div>
       </div>
+      {/* Adding options to the question */}
       <div className="qa-quiz-chooses">
         <div className="qa-quiz-add-option">
           {totalQuestions[selQuestion].options.map((opt, index) => {
             if (index == 0 || index == 1) {
               return (
                 <Text
+                  isQa={quiz.type == "qa" ? true : false}
                   handleOptionInput={(e) => handleOptionInput(e, index)}
                   setSelOption={() => setSelOption(index)}
                   inputValue={
@@ -326,6 +336,7 @@ function QAquiz({ onClose, quiz }) {
             }
             return (
               <Text
+                isQa={quiz.type == "qa" ? true : false}
                 handleOptionInput={(e) => handleOptionInput(e, index)}
                 setSelOption={() => setSelOption(index)}
                 inputValue={
@@ -355,55 +366,59 @@ function QAquiz({ onClose, quiz }) {
 
           <AddOption handleClick={handleAddOption} />
         </div>
-        <div className="qa-quiz-timer">
-          <span>Timer</span>
-          <div className="timer">
-            <span
-              onClick={() => handleTimer("off")}
-              style={{
-                backgroundColor: `${
-                  totalQuestions[selQuestion].timer == "off" ? "#d60000" : ""
-                }`,
-                color: `${
-                  totalQuestions[selQuestion].timer == "off" ? "white" : ""
-                }`,
-              }}
-            >
-              OFF
-            </span>
-            <span
-              onClick={() => handleTimer("5")}
-              style={{
-                backgroundColor: `${
-                  totalQuestions[selQuestion].timer == "5" ? "#d60000" : ""
-                }`,
-                color: `${
-                  totalQuestions[selQuestion].timer == "5" ? "white" : ""
-                }`,
-              }}
-            >
-              5 sec
-            </span>
-            <span
-              onClick={() => handleTimer("10")}
-              style={{
-                backgroundColor: `${
-                  totalQuestions[selQuestion].timer == "10" ? "#d60000" : ""
-                }`,
-                color: `${
-                  totalQuestions[selQuestion].timer == "10" ? "white" : ""
-                }`,
-              }}
-            >
-              10 sec
-            </span>
+        {quiz.type == "qa" && (
+          <div className="qa-quiz-timer">
+            <span>Timer</span>
+            <div className="timer">
+              <span
+                onClick={() => handleTimer("off")}
+                style={{
+                  backgroundColor: `${
+                    totalQuestions[selQuestion].timer == "off" ? "#d60000" : ""
+                  }`,
+                  color: `${
+                    totalQuestions[selQuestion].timer == "off" ? "white" : ""
+                  }`,
+                }}
+              >
+                OFF
+              </span>
+              <span
+                onClick={() => handleTimer("5")}
+                style={{
+                  backgroundColor: `${
+                    totalQuestions[selQuestion].timer == "5" ? "#d60000" : ""
+                  }`,
+                  color: `${
+                    totalQuestions[selQuestion].timer == "5" ? "white" : ""
+                  }`,
+                }}
+              >
+                5 sec
+              </span>
+              <span
+                onClick={() => handleTimer("10")}
+                style={{
+                  backgroundColor: `${
+                    totalQuestions[selQuestion].timer == "10" ? "#d60000" : ""
+                  }`,
+                  color: `${
+                    totalQuestions[selQuestion].timer == "10" ? "white" : ""
+                  }`,
+                }}
+              >
+                10 sec
+              </span>
+            </div>
           </div>
-        </div>
+        )}
       </div>
-      <CancelBtn onClose={onClose} handleSubmit={handleCreateQuiz}>
+      {/* buttons */}
+      <ModalBtn onClose={onClose} handleSubmit={handleCreateQuiz}>
         <span>Cancel</span>
         <span>Create Quiz</span>
-      </CancelBtn>
+      </ModalBtn>
+      {/* Displaying error */}
       <div
         style={{
           color: "red",

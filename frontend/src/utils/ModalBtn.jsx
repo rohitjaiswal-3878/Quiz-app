@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.css";
 
-function CancelBtn({ onClose, handleSubmit, children }) {
+function ModalBtn({ onClose, handleSubmit, children }) {
   return (
     <div className="quiz-buttons">
       <button className="quiz-cancel-btn" onClick={onClose}>
@@ -14,4 +14,4 @@ function CancelBtn({ onClose, handleSubmit, children }) {
   );
 }
 
-export default CancelBtn;
+export default ModalBtn;

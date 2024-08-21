@@ -3,6 +3,7 @@ import "./index.css";
 import deleteIcon from "../assets/delete.png";
 
 function Text({
+  isQa,
   handleOptionInput,
   setSelOption,
   inputValue,
@@ -13,17 +14,25 @@ function Text({
   placeholder,
 }) {
   return (
-    <div className="quiz-text">
-      <input
-        type="radio"
-        name="questionOpt"
-        id="quiz-text-radio"
-        onChange={selectAnswer}
-        checked={answer == "right" ? true : false}
-      />
+    <div
+      className="quiz-text"
+      style={{
+        left: `${!isQa ? "0px" : ""}`,
+      }}
+    >
+      {isQa && (
+        <input
+          type="radio"
+          name="questionOpt"
+          id="quiz-text-radio"
+          onChange={selectAnswer}
+          checked={answer == "right" ? true : false}
+        />
+      )}
 
       <input
         type="text"
+        autoComplete="off"
         placeholder={
           typeof placeholder == "object" ? placeholder[0] : placeholder
         }
@@ -42,6 +51,7 @@ function Text({
       {typeof placeholder == "object" && (
         <input
           type="text"
+          autoComplete="off"
           placeholder={placeholder[1]}
           className="quiz-text-input"
           onChange={handleOptionInput}
