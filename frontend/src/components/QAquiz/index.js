@@ -6,7 +6,13 @@ import Text from "../../utils/Text";
 import AddOption from "../../utils/AddOption";
 import ModalBtn from "../../utils/ModalBtn";
 
-function QAquiz({ onClose, quiz, setCreateQuiz, registerQuiz }) {
+function QAquiz({
+  onClose,
+  quiz,
+  setCreateQuiz,
+  registerQuiz,
+  validationError,
+}) {
   const [selQuestion, setSelQuestion] = useState(0);
   const [selOption, setSelOption] = useState(0);
   const [error, setError] = useState("");
@@ -74,6 +80,8 @@ function QAquiz({ onClose, quiz, setCreateQuiz, registerQuiz }) {
   // handles question selecting
   const handleSelectedQuestion = (index) => {
     setError("");
+    validationError("");
+    validationError("");
     setSelQuestion(index);
   };
 
@@ -98,6 +106,7 @@ function QAquiz({ onClose, quiz, setCreateQuiz, registerQuiz }) {
         timer: "off",
       };
       setError("");
+      validationError("");
       setTotalQuestions([...totalQuestions, newQues]);
       setSelQuestion(totalQuestions.length);
     }
@@ -109,6 +118,7 @@ function QAquiz({ onClose, quiz, setCreateQuiz, registerQuiz }) {
     const newQuestions = totalQuestions.filter((ques, i) => i != index);
 
     setError("");
+    validationError("");
     setTotalQuestions(newQuestions);
     setSelQuestion(newQuestions.length - 1);
   };

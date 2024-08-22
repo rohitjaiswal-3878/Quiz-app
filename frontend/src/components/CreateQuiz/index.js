@@ -5,14 +5,19 @@ import ModalBtn from "../../utils/ModalBtn";
 import bigCross from "../../assets/big-cross.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Slide, Zoom, Flip, Bounce } from "react-toastify";
+import { saveQuiz } from "../../apis/quiz";
+import { useLocation } from "react-router-dom";
 
 function CreateQuiz({ onClose }) {
+  const location = useLocation();
   const [createQuiz, setCreateQuiz] = useState({
     name: "",
     type: "",
     questions: [],
   });
-
+  const [quizLink, setQuizLink] = useState("");
+  const [errors, setErrors] = useState("");
   const [createQuizErrors, setCreateQuizErrors] = useState("");
   const [showQuizModals, setShowQuizModals] = useState({
     qaQuiz: false,
@@ -128,13 +133,26 @@ function CreateQuiz({ onClose }) {
   );
 
   // handle api request to create quiz
-  const registerQuiz = () => {
-    setShowQuizModals({
-      qaQuiz: false,
-      pollQuiz: false,
-      cQuiz: false,
-      complete: true,
-    });
+  const registerQuiz = async () => {
+    const response = await saveQuiz(createQuiz);
+    if (response.status == 500) {
+      let msg =
+        response.data.err.name +
+        ":" +
+        "Please fill all details in questions before creating the quiz.";
+      setErrors(msg);
+    } else if (response.status == 200) {
+      let currentURL = window.location.href.replace(location.pathname, "");
+      let link = `${currentURL}/test/${response.data.newQuiz._id}`;
+      setQuizLink(link);
+      setErrors("");
+      setShowQuizModals({
+        qaQuiz: false,
+        pollQuiz: false,
+        cQuiz: false,
+        complete: true,
+      });
+    }
   };
   // JSX for adding questions in quiz. (Q & A)
   const qaQuestions = (
@@ -143,6 +161,7 @@ function CreateQuiz({ onClose }) {
       quiz={createQuiz}
       setCreateQuiz={setCreateQuiz}
       registerQuiz={registerQuiz}
+      validationError={setErrors}
     />
   );
 
@@ -153,6 +172,7 @@ function CreateQuiz({ onClose }) {
       quiz={createQuiz}
       setCreateQuiz={setCreateQuiz}
       registerQuiz={registerQuiz}
+      validationError={setErrors}
     />
   );
 
@@ -160,15 +180,22 @@ function CreateQuiz({ onClose }) {
   const completeQuizCreation = (
     <div className="quiz-created">
       <h2>Congrats your Quiz is Published!</h2>
-      <input type="text" readOnly value="link" className="quiz-created-link" />
+      <input
+        type="text"
+        defaultValue={quizLink}
+        className="quiz-created-link"
+      />
       <button
-        onClick={() => toast.success("Link copied to clipboard")}
+        onClick={async () => {
+          await window.navigator.clipboard.writeText(quizLink);
+          toast.success("Link copied to clipboard");
+        }}
         className="quiz-created-share"
       >
         Share
       </button>
       <img src={bigCross} alt="cross" onClick={onClose} />
-      <ToastContainer limit={1} autoClose={2000} />
+      <ToastContainer limit={1} autoClose={2000} transition={Zoom} />
     </div>
   );
 
@@ -183,6 +210,17 @@ function CreateQuiz({ onClose }) {
         : showQuizModals.complete
         ? completeQuizCreation
         : ""}
+      <span
+        style={{
+          color: "red",
+          fontSize: "0.75rem",
+          width: "50%",
+          marginLeft: "11%",
+          fontWeight: "550",
+        }}
+      >
+        {errors}
+      </span>
     </div>
   );
 }

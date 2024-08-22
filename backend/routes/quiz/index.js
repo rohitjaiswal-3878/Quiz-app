@@ -17,7 +17,7 @@ router.post("/create", async (req, res, next) => {
     });
     await newQuiz.save();
 
-    res.status(200).json({ message: "Quiz created successfully!" });
+    res.status(200).json({ message: "Quiz created successfully!", newQuiz });
   } catch (err) {
     next(err);
   }

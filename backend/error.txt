@@ -43,3 +43,82 @@ RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: { message: 'Quiz
     at ServerResponse.json (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\response.js:279:15)
     at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:71:8
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+POST - /quiz/create - ::1 - Thu Aug 22 2024 13:58:28 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.3.content: Path `content` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+POST - /quiz/create - ::1 - Thu Aug 22 2024 14:19:30 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.1.content: Path `content` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+POST - /quiz/create - ::1 - Thu Aug 22 2024 14:41:20 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.0.options.0.imageURL: Path `imageURL` is required., questions.0.options.1.imageURL: Path `imageURL` is required., questions.1.options.0.text: Path `text` is required., questions.1.options.0.answer: Path `answer` is required., questions.1.options.1.text: Path `text` is required., questions.1.options.1.answer: Path `answer` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+POST - /quiz/create - ::1 - Thu Aug 22 2024 14:49:45 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.0.options.0.imageURL: Path `imageURL` is required., questions.0.options.1.imageURL: Path `imageURL` is required., questions.1.options.0.text: Path `text` is required., questions.1.options.0.answer: Path `answer` is required., questions.1.options.1.text: Path `text` is required., questions.1.options.1.answer: Path `answer` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+POST - /quiz/create - ::1 - Thu Aug 22 2024 14:55:33 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.1.content: Path `content` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+POST - /quiz/create - ::1 - Thu Aug 22 2024 15:44:56 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.1.content: Path `content` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+POST - /quiz/create - ::1 - Thu Aug 22 2024 16:06:26 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.1.content: Path `content` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+POST - /quiz/create - ::1 - Thu Aug 22 2024 16:06:41 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.1.content: Path `content` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+POST - /quiz/create - ::1 - Thu Aug 22 2024 16:09:47 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.1.content: Path `content` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+POST - /quiz/create - ::1 - Thu Aug 22 2024 16:10:43 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.1.content: Path `content` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+POST - /quiz/create - ::1 - Thu Aug 22 2024 16:10:51 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.1.content: Path `content` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
