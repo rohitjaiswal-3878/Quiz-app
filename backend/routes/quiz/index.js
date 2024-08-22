@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 require("dotenv").config();
 const Quiz = require("../../models/Quiz");
+const authMiddleware = require("../../middlewares/authMiddleware");
 
 // Route for creating quiz
-router.post("/create", async (req, res, next) => {
+router.post("/create", authMiddleware, async (req, res, next) => {
   try {
     const { name, type, questions } = req.body;
     const userId = req.user._id;
@@ -24,7 +25,7 @@ router.post("/create", async (req, res, next) => {
 });
 
 // Route to delete quiz
-router.delete("/remove/:id", async (req, res, next) => {
+router.delete("/remove/:id", authMiddleware, async (req, res, next) => {
   try {
     const id = req.params.id;
 
@@ -46,7 +47,7 @@ router.delete("/remove/:id", async (req, res, next) => {
 });
 
 // Route to update quiz
-router.patch("/edit/:id", async (req, res, next) => {
+router.patch("/edit/:id", authMiddleware, async (req, res, next) => {
   try {
     const id = req.params.id;
     if (!id) {
@@ -69,6 +70,17 @@ router.patch("/edit/:id", async (req, res, next) => {
     res
       .status(200)
       .json({ message: "Quiz updated successfully!!", updatedQuiz });
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Route to get Quiz by id
+router.get("/fetch/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const quizData = await Quiz.findById(id);
+    res.status(200).json(quizData);
   } catch (err) {
     next(err);
   }

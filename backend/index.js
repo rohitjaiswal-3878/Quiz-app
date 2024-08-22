@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 
 // Using routes
 app.use("/auth", authRoutes);
-app.use("/quiz", authMiddleware, quizRoutes);
+app.use("/quiz", quizRoutes);
 
 // error handling middleware
 app.use((err, req, res, next) => {

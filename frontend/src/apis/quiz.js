@@ -18,4 +18,16 @@ const saveQuiz = async (quizData) => {
   }
 };
 
-export { saveQuiz };
+// Get quiz data by id.
+const getQuizData = async (id) => {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND}/quiz/fetch/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { saveQuiz, getQuizData };

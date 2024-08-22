@@ -4,6 +4,7 @@ import Authentication from "./pages/Authentication";
 import Homepage from "./pages/Homepage";
 import Analytics from "./pages/Analytics";
 import Dashboard from "./pages/Dashboard";
+import TakeTest from "./pages/TakeTest";
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
             <Route element={<Dashboard />} path="dashboard" />
             <Route element={<Analytics />} path="analytics" />
           </Route>
+
+          <Route path="/test/:id" element={<TakeTest />}></Route>
 
           {/* default redirect to authentication page. */}
           <Route path="*" element={<Navigate to="/auth" />} />

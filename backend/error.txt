@@ -122,3 +122,87 @@ ValidationError: Quiz validation failed: questions.1.content: Path `content` is 
     at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
     at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
     at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+GET - /quiz/fetch/asd - ::1 - Thu Aug 22 2024 20:45:14 GMT+0530 (India Standard Time)
+CastError: Cast to ObjectId failed for value "asd" (type string) at path "_id" for model "Quiz"
+    at SchemaObjectId.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2585:8)
+    at model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
+GET - /quiz/fetch/asd - ::1 - Thu Aug 22 2024 20:45:14 GMT+0530 (India Standard Time)
+CastError: Cast to ObjectId failed for value "asd" (type string) at path "_id" for model "Quiz"
+    at SchemaObjectId.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2585:8)
+    at model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
+GET - /quiz/fetch/asd - ::1 - Thu Aug 22 2024 20:45:20 GMT+0530 (India Standard Time)
+CastError: Cast to ObjectId failed for value "asd" (type string) at path "_id" for model "Quiz"
+    at SchemaObjectId.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2585:8)
+    at model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
+GET - /quiz/fetch/asd - ::1 - Thu Aug 22 2024 20:45:20 GMT+0530 (India Standard Time)
+CastError: Cast to ObjectId failed for value "asd" (type string) at path "_id" for model "Quiz"
+    at SchemaObjectId.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2585:8)
+    at model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
+GET - /quiz/fetch/66c719699b496e424764ebe - ::1 - Thu Aug 22 2024 20:48:03 GMT+0530 (India Standard Time)
+CastError: Cast to ObjectId failed for value "66c719699b496e424764ebe" (type string) at path "_id" for model "Quiz"
+    at SchemaObjectId.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2585:8)
+    at model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
+GET - /quiz/fetch/66c719699b496e424764ebe - ::1 - Thu Aug 22 2024 20:48:03 GMT+0530 (India Standard Time)
+CastError: Cast to ObjectId failed for value "66c719699b496e424764ebe" (type string) at path "_id" for model "Quiz"
+    at SchemaObjectId.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2585:8)
+    at model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
+GET - /quiz/fetch/66c719699b496e424764ebe - ::1 - Thu Aug 22 2024 20:48:29 GMT+0530 (India Standard Time)
+CastError: Cast to ObjectId failed for value "66c719699b496e424764ebe" (type string) at path "_id" for model "Quiz"
+    at SchemaObjectId.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2585:8)
+    at model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
