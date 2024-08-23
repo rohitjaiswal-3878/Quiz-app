@@ -19,7 +19,7 @@ function TakeTest() {
     <div className="test-container">
       {Object.keys(quizData) != 0 ? (
         <div className="test-questions">
-          <Question questions={quizData.questions} />
+          <Question questions={quizData.questions} quizData={quizData} />
         </div>
       ) : (
         "Loading..."
