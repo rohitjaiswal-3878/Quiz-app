@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import trophy from "../../assets/trophy.png";
-function Question({ questions, quizData }) {
+import { updateResult } from "../../apis/result";
+
+function Question({ questions, quizData, resultId }) {
   const [ques, setQues] = useState(0);
   const [seconds, setSeconds] = useState(questions[ques].timer);
   const [options, setOptions] = useState([false, false, false, false]);
@@ -22,13 +24,16 @@ function Question({ questions, quizData }) {
       } else {
         setError("");
         setCompleted(true);
+        updateResult(resultId, result);
       }
     } else {
       if (options.includes(true)) {
         setError("");
         setOptions([false, false, false, false]);
         setSeconds(parseInt(questions[ques + 1].timer));
+
         setQues(ques + 1);
+        updateResult(resultId, result);
       } else if (seconds == 0) {
         let newResult = {
           name: questions[ques].content,
@@ -42,6 +47,7 @@ function Question({ questions, quizData }) {
         setOptions([false, false, false, false]);
         setSeconds(parseInt(questions[ques + 1].timer));
         setQues(ques + 1);
+        updateResult(resultId, result);
       } else {
         setError("Please select any option to proceed!");
       }
@@ -64,11 +70,6 @@ function Question({ questions, quizData }) {
 
     setOptions(newOptions);
   };
-
-  // Store the result when component is remove from the DOM.
-  useEffect(() => {
-    console.log("saved to db");
-  }, []);
 
   // creates timer
   useEffect(() => {
@@ -100,74 +101,85 @@ function Question({ questions, quizData }) {
             )}
           </div>
 
-          <h3>{questions[ques].content}</h3>
+          {/* Question */}
+          <div className="question-body">
+            <h3>{questions[ques].content}</h3>
 
-          {/* Question options */}
-          <div className="quesiton-options">
-            {questions[ques].options.map((opt, index) => (
+            {/* Question options */}
+            <div className="quesiton-options">
+              {questions[ques].options.map((opt, index) => (
+                <span
+                  className={options[index] ? "selected option" : "option"}
+                  key={index}
+                  style={{
+                    padding: questions[ques].qType == "text&img" ? "6px" : "",
+                    justifyContent:
+                      questions[ques].qType == "text&img"
+                        ? "space-between"
+                        : "center",
+                  }}
+                  onClick={() => handleSelectOption(index)}
+                >
+                  {questions[ques].qType == "text" ? (
+                    opt.text
+                  ) : questions[ques].qType == "image" ? (
+                    <img src={opt.imageURL} alt="image" id="type-image" />
+                  ) : (
+                    <>
+                      <span>{opt.text}</span>
+                      <img
+                        src={opt.imageURL}
+                        alt="image"
+                        id="type-text-image"
+                      />
+                    </>
+                  )}
+                </span>
+              ))}
+            </div>
+
+            <button className="test-btn" onClick={handleNext}>
+              {ques + 1 == questions.length ? "Submit" : "Next"}
+            </button>
+            {error && (
               <span
-                className={options[index] ? "selected option" : "option"}
-                key={index}
                 style={{
-                  padding: questions[ques].qType == "text&img" ? "6px" : "",
-                  justifyContent:
-                    questions[ques].qType == "text&img"
-                      ? "space-between"
-                      : "center",
+                  color: "red",
+                  textAlign: "center",
+                  marginTop: "6px",
+                  fontSize: "0.8rem",
                 }}
-                onClick={() => handleSelectOption(index)}
               >
-                {questions[ques].qType == "text" ? (
-                  opt.text
-                ) : questions[ques].qType == "image" ? (
-                  <img src={opt.imageURL} alt="image" id="type-image" />
-                ) : (
-                  <>
-                    <span>{opt.text}</span>
-                    <img src={opt.imageURL} alt="image" id="type-text-image" />
-                  </>
-                )}
+                {error}
               </span>
-            ))}
+            )}
           </div>
-
-          <button className="test-btn" onClick={handleNext}>
-            {ques + 1 == questions.length ? "Submit" : "Next"}
-          </button>
-          {error && (
-            <span
-              style={{
-                color: "red",
-                textAlign: "center",
-                marginTop: "10px",
-                fontSize: "0.8rem",
-              }}
-            >
-              {error}
-            </span>
-          )}
         </>
       ) : completed && quizData.type == "qa" ? (
         <>
           {/* QA completion */}
-          <span className="congrats-heading">Congrats Quiz is completed</span>
-          <img src={trophy} alt="trophy" className="trophy" />
-          <div className="congrats-score">
-            <span>Your Score is </span>
-            <span className="score-count">
-              {`0${result.questions.filter((q) => q.answered).length}/0${
-                questions.length
-              }`}
-            </span>
+          <div className="congrats">
+            <span className="congrats-heading">Congrats Quiz is completed</span>
+            <img src={trophy} alt="trophy" className="trophy" />
+            <div className="congrats-score">
+              <span>Your Score is </span>
+              <span className="score-count">
+                {`0${result.questions.filter((q) => q.answered).length}/0${
+                  questions.length
+                }`}
+              </span>
+            </div>
           </div>
         </>
       ) : (
         <>
           {/* Poll completion */}
-          <span className="poll-result">
-            Thank you <br /> for participating in <br />
-            the Poll
-          </span>
+          <div className="poll-result">
+            <span>
+              Thank you <br /> for participating in <br />
+              the Poll
+            </span>
+          </div>
         </>
       )}
     </div>

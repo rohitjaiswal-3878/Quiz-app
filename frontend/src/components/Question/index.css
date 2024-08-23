@@ -1,17 +1,14 @@
 .question-container {
     width: 100%;
     height: 100%;
-    display: flex;
     padding: 1rem 0;
-    flex-direction: column;
-    align-items: center;
 }
 
-.question-container h3 {
-    font-size: 1.5rem;
-    text-align: left;
-    width: 90%;
-    margin-top: 1.5rem;
+.question-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
 }
 
 .question-heading {
@@ -23,6 +20,13 @@
     justify-content: space-between;
 }
 
+.question-container h3 {
+    font-size: 1.5rem;
+    text-align: left;
+    width: 90%;
+}
+
+
 .question-timer {
     color: #D60000;
 }
@@ -30,18 +34,17 @@
 .quesiton-options {
     padding: 15px;
     width: 90%;
-    margin-top: 1.5rem;
     height: 60%;
     display: flex;
     flex-wrap: wrap;
     justify-content: start;
-    row-gap: 20px;
+    row-gap: 25px;
     column-gap: 7rem;
 }
 
 .quesiton-options .option {
     width: 40.6%;
-    height: 35%;
+    height: 90px;
     cursor: pointer;
     border-radius: 8px;
     background-color: #F0F0F0;
@@ -93,10 +96,21 @@
     transform: scale(1.02, 1.02);
 }
 
+.congrats {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .congrats-heading {
     font-size: 1.6rem;
-    margin-top: 1.7rem;
     font-weight: 700;
+    margin-top: 1rem;
+}
+.trophy {
+    height: 65%;
+    object-fit: contain;
 }
 
 .congrats-score {
@@ -109,9 +123,96 @@
 }
 
 .poll-result {
+    height: 100%;
+    margin-top: 0px;
     font-size: 3rem;
     font-weight: 700;
-    width: 70%;
-    margin-top: 16%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+}
+
+
+@media only screen and (max-width: 699px){
+    .question-container {
+        overflow-y: scroll;
+    }
+    .question-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 1rem;
+        min-height: 85vh;
+    }
+    
+    .question-heading { 
+        margin-top: 5px;
+        font-size: 1.4rem;   
+    }
+    .question-container h3 {
+        margin-top: 1.3rem;
+        text-align: center;
+    }
+    .quesiton-options {
+        padding: 5px;
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        row-gap: 1.2rem;
+        column-gap: 0px;
+    }
+    .quesiton-options .option {
+        width: 95%;
+        height: 90px;
+    }
+    .quesiton-options .option #type-image {
+        width: 100%;
+        height: 100%;
+    }
+    .test-btn {
+        width: 45%;
+        margin-top: 0.8rem;
+        border-radius: 8px;
+        
+    }
+    .congrats {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .trophy {
+        height: 47%;
+        object-fit: contain;
+    }
+    .congrats-heading {
+        width: 85%;
+        text-align: center;
+        font-size: 1.9rem;
+        margin-top: 0px;
+    }
+    .congrats-score {
+        text-align: center;
+        width: 80%;
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+    .poll-result {
+        height: 90vh;
+        margin-top: 0px;
+        font-size: 2rem;
+        font-weight: 700;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 8px;
+    }
 }

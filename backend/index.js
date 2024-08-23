@@ -6,6 +6,7 @@ const authRoutes = require("./routes/auth");
 const fs = require("fs");
 const cors = require("cors");
 const quizRoutes = require("./routes/quiz");
+const resultRoutes = require("./routes/result");
 const authMiddleware = require("./middlewares/authMiddleware");
 const port = process.env.PORT || 3001;
 
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
 // Using routes
 app.use("/auth", authRoutes);
 app.use("/quiz", quizRoutes);
+app.use("/result", resultRoutes);
 
 // error handling middleware
 app.use((err, req, res, next) => {
