@@ -98,3 +98,46 @@
     background-color: #60B84B;
     color: white;
 }
+
+.trending-quiz {
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 0.2em;
+    width: 21%;
+    height: 1.59em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.trending-quiz-heading {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trending-quiz-heading h6{
+    font-size: 0.58em;
+}
+
+.trending-quiz-heading p {
+    font-size: 0.32em;
+    display: flex;
+    align-items: center;
+    color: #FF5D01;
+    font-weight: 550;
+    gap: 5px;
+}
+
+.trending-quiz-heading p img {
+    width: 1.05em;
+}
+
+.trending-quiz-created-date {
+    font-size: 0.3em;
+    width: 90%;
+    color: #60B84B;
+    font-weight: 550;
+}

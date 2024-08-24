@@ -61,6 +61,7 @@ router.get("/impression", authMiddleware, async (req, res, next) => {
         });
       });
     }).then(() => {
+      quizImpressions.sort((a, b) => b.impression - a.impression);
       res.status(200).json(quizImpressions);
     });
   } catch (error) {
