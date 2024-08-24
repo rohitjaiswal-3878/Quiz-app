@@ -35,25 +35,28 @@ const quizQuestion = new Schema({
   },
 });
 
-const quizSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
+const quizSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
+    },
+    questions: {
+      type: [quizQuestion],
+      required: true,
+    },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
-  type: {
-    type: String,
-    required: true,
-  },
-  questions: {
-    type: [quizQuestion],
-    required: true,
-  },
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-});
+  { timestamps: true }
+);
 
 const Quiz = mongoose.model("Quiz", quizSchema);
 module.exports = Quiz;

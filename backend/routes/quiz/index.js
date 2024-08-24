@@ -85,4 +85,16 @@ router.get("/fetch/:id", async (req, res, next) => {
     next(err);
   }
 });
+
+// Route to get all quiz of particular user
+router.get("/all-quizzes", authMiddleware, async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+    const allQuizzes = await Quiz.find({ userId });
+    res.status(200).json(allQuizzes);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

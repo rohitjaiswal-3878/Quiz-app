@@ -1497,3 +1497,97 @@ BadRequestError: request aborted
     at socketOnClose (node:_http_server:788:3)
     at Socket.emit (node:events:530:35)
     at TCP.<anonymous> (node:net:337:12)
+GET - /quiz/fetch/66c758ad37393e16fff19f9a - ::1 - Sat Aug 24 2024 14:08:45 GMT+0530 (India Standard Time)
+MongoServerSelectionError: B83F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1590:SSL alert number 80
+
+    at Topology.selectServer (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\sdam\topology.js:303:38)
+    at async executeOperation (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\operations\execute_operation.js:101:20)
+    at async FindCursor._initialize (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\find_cursor.js:58:26)
+    at async [kInit] (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\abstract_cursor.js:463:27)
+    at async next (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\abstract_cursor.js:520:13)
+    at async FindCursor.next (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\abstract_cursor.js:237:16)
+    at async Collection.findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\collection.js:275:21)
+    at async model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2598:15)
+    at async model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:63)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
+GET - /quiz/fetch/66c8412537393e16fff1a7e5 - ::1 - Sat Aug 24 2024 14:09:06 GMT+0530 (India Standard Time)
+MongoServerSelectionError: B83F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1590:SSL alert number 80
+
+    at Topology.selectServer (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\sdam\topology.js:303:38)
+    at async executeOperation (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\operations\execute_operation.js:101:20)
+    at async FindCursor._initialize (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\find_cursor.js:58:26)
+    at async [kInit] (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\abstract_cursor.js:463:27)
+    at async next (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\abstract_cursor.js:520:13)
+    at async FindCursor.next (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\abstract_cursor.js:237:16)
+    at async Collection.findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\collection.js:275:21)
+    at async model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2598:15)
+    at async model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:63)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
+GET - /quiz/fetch/66c8412537393e16fff1a7e5 - ::1 - Sat Aug 24 2024 14:10:15 GMT+0530 (India Standard Time)
+MongoServerSelectionError: B83F0000:error:0A000438:SSL routines:ssl3_read_bytes:tlsv1 alert internal error:c:\ws\deps\openssl\openssl\ssl\record\rec_layer_s3.c:1590:SSL alert number 80
+
+    at Topology.selectServer (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\sdam\topology.js:303:38)
+    at async executeOperation (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\operations\execute_operation.js:101:20)
+    at async FindCursor._initialize (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\find_cursor.js:58:26)
+    at async [kInit] (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\abstract_cursor.js:463:27)
+    at async next (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\abstract_cursor.js:520:13)
+    at async FindCursor.next (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\cursor\abstract_cursor.js:237:16)
+    at async Collection.findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\node_modules\mongodb\lib\collection.js:275:21)
+    at async model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2598:15)
+    at async model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:63)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
+GET - /quiz/fetch/66c758a - ::1 - Sat Aug 24 2024 14:14:17 GMT+0530 (India Standard Time)
+CastError: Cast to ObjectId failed for value "66c758a" (type string) at path "_id" for model "Quiz"
+    at SchemaObjectId.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2585:8)
+    at model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
+GET - /quiz/fetch/66c758a - ::1 - Sat Aug 24 2024 14:14:32 GMT+0530 (India Standard Time)
+CastError: Cast to ObjectId failed for value "66c758a" (type string) at path "_id" for model "Quiz"
+    at SchemaObjectId.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schema\objectId.js:250:11)
+    at SchemaType.applySetters (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1236:12)
+    at SchemaType.castForQuery (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1653:17)
+    at cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\cast.js:375:32)
+    at Query.cast (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4857:12)
+    at Query._castConditions (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2265:10)
+    at model.Query._findOne (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:2585:8)
+    at model.Query.exec (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\query.js:4401:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:82:22
+POST - /quiz/create - ::1 - Sat Aug 24 2024 14:28:47 GMT+0530 (India Standard Time)
+ValidationError: Quiz validation failed: questions.1.content: Path `content` is required.
+    at Document.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3312:32)
+    at Subdocument.invalidate (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\types\subdocument.js:229:12)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\document.js:3073:17
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\mongoose\lib\schemaType.js:1388:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+GET - /quiz/all-quizzes - ::1 - Sat Aug 24 2024 14:41:11 GMT+0530 (India Standard Time)
+TypeError: Cannot read properties of undefined (reading '_id')
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:92:29
+    at Layer.handle [as handle_request] (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:47:12)
+GET - /quiz/all-quizzes - ::1 - Sat Aug 24 2024 14:41:50 GMT+0530 (India Standard Time)
+TypeError: Cannot read properties of undefined (reading '_id')
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\routes\quiz\index.js:92:29
+    at Layer.handle [as handle_request] (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:175:3)
+    at router (C:\Users\Rohit\Desktop\MERN course\projects\Quiz test (final evaluation)\backend\node_modules\express\lib\router\index.js:47:12)
