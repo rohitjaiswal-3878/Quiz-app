@@ -1,18 +1,30 @@
 import React from "react";
 import impressionIcon from "../assets/impression-icon.png";
 
-function TrendingQuiz() {
+function TrendingQuiz({ quiz }) {
   return (
     <div className="trending-quiz">
       <div className="trending-quiz-heading">
-        <h6>Quiz 1</h6>
+        <h6>
+          {quiz.name.length > 9
+            ? quiz.name.substring(0, 10) + "..."
+            : quiz.name}
+        </h6>
         <p>
-          <span>667</span>
+          <span>{quiz.impression}</span>
           <img src={impressionIcon} alt="impression icon" />
         </p>
       </div>
       <span className="trending-quiz-created-date">
-        Created at : 04 Sep, 2023
+        Created on :{" "}
+        {new Date(quiz.created).toLocaleDateString("default", {
+          month: "long",
+          day: "numeric",
+        })}
+        ,{" "}
+        {new Date(quiz.created).toLocaleDateString("default", {
+          year: "numeric",
+        })}
       </span>
     </div>
   );

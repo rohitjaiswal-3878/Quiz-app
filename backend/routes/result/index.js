@@ -45,6 +45,11 @@ router.get("/impression", authMiddleware, async (req, res, next) => {
   try {
     const userId = req.user._id;
     const allQuizes = await Quiz.find({ userId: userId });
+    if (allQuizes.length == 0) {
+      return res
+        .status(200)
+        .json({ filteredImpression: [], totalImpressions: 0 });
+    }
     let quizImpressions = [];
     new Promise((resolve, reject) => {
       allQuizes.forEach((quiz, index) => {
@@ -61,8 +66,13 @@ router.get("/impression", authMiddleware, async (req, res, next) => {
         });
       });
     }).then(() => {
-      quizImpressions.sort((a, b) => b.impression - a.impression);
-      res.status(200).json(quizImpressions);
+      let totalImpressions = 0;
+      let filteredImpression = quizImpressions.filter((ele) => {
+        totalImpressions += ele.impression;
+        return ele.impression > 10;
+      });
+      filteredImpression.sort((a, b) => b.impression - a.impression);
+      res.status(200).json({ filteredImpression, totalImpressions });
     });
   } catch (error) {
     next(error);
