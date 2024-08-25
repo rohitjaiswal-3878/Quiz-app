@@ -46,9 +46,11 @@ router.get("/impression", authMiddleware, async (req, res, next) => {
     const userId = req.user._id;
     const allQuizes = await Quiz.find({ userId: userId });
     if (allQuizes.length == 0) {
-      return res
-        .status(200)
-        .json({ filteredImpression: [], totalImpressions: 0 });
+      return res.status(200).json({
+        filteredImpression: [],
+        totalImpressions: 0,
+        quizImpressions: [],
+      });
     }
     let quizImpressions = [];
     new Promise((resolve, reject) => {
@@ -72,8 +74,83 @@ router.get("/impression", authMiddleware, async (req, res, next) => {
         return ele.impression > 10;
       });
       filteredImpression.sort((a, b) => b.impression - a.impression);
-      res.status(200).json({ filteredImpression, totalImpressions });
+      res
+        .status(200)
+        .json({ filteredImpression, totalImpressions, quizImpressions });
     });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Route to get analytics of quiz.
+router.get("/analytics/:id", authMiddleware, async (req, res, next) => {
+  try {
+    const quizId = req.params.id;
+    const userId = req.user._id;
+
+    if (!quizId) {
+      return res.status(400).json({ message: "Wrong request!" });
+    }
+
+    const quiz = await Quiz.findOne({ _id: quizId, userId });
+    const allImpressions = await Result.find({ userId, quizId });
+
+    let overallAnalytics = [];
+
+    if (quiz.type == "qa") {
+      quiz.questions.forEach((question, index) => {
+        let analytics = {
+          ques: question.content,
+          attempted: 0,
+          right: 0,
+          wrong: 0,
+        };
+
+        allImpressions.forEach((imp, i) => {
+          if (
+            imp.questions[index] &&
+            analytics.ques == imp.questions[index].name
+          ) {
+            if (imp.questions[index].attemped) {
+              analytics.attempted += 1;
+              if (imp.questions[index].answered) {
+                analytics.right += 1;
+              } else {
+                analytics.wrong += 1;
+              }
+            }
+          }
+        });
+
+        overallAnalytics.push(analytics);
+      });
+    } else {
+      quiz.questions.forEach((question, index) => {
+        let analytics = {
+          ques: question.content,
+          option1: 0,
+          option2: 0,
+          option3: 0,
+          option4: 0,
+        };
+
+        allImpressions.forEach((imp, i) => {
+          if (
+            imp.questions[index] &&
+            analytics.ques == imp.questions[index].name
+          ) {
+            if (imp.questions[index].attemped) {
+              let selOption = imp.questions[index].selectedOption.index + 1;
+              analytics[`option${selOption}`] += 1;
+            }
+          }
+        });
+        overallAnalytics.push(analytics);
+      });
+    }
+
+    res.status(200).json(overallAnalytics);
   } catch (error) {
     next(error);
   }

@@ -82,7 +82,7 @@ function Dashboard() {
                 <span
                   style={{
                     textAlign: "center",
-                    fontSize: "0.8rem",
+                    fontSize: "0.35em",
                     color: "rgba(0,0,0,0.5)",
                   }}
                 >
@@ -101,7 +101,7 @@ function Dashboard() {
               <span
                 style={{
                   textAlign: "center",
-                  fontSize: "0.8rem",
+                  fontSize: "0.35em",
                   color: "rgba(0,0,0,1)",
                 }}
               >
