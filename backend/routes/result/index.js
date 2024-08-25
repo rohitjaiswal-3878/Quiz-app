@@ -60,6 +60,7 @@ router.get("/impression", authMiddleware, async (req, res, next) => {
             impression: allResults.length,
             name: quiz.name,
             created: quiz.createdAt,
+            quizId: quiz._id,
           };
           quizImpressions.push(imp);
           if (quizImpressions.length == allQuizes.length) {

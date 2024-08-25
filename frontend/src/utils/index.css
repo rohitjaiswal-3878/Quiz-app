@@ -142,3 +142,64 @@
     color: #60B84B;
     font-weight: 550;
 }
+
+.qaquestion-container {
+    margin-top: 3.5vh;
+    border-bottom: 0.03em solid #D7D7D7;
+    width: 90%;
+    padding: 0px 0px 3vh 0px;
+}
+
+.qaquestion {
+    font-size: 0.31em;
+    font-weight: 500;
+}
+
+.qaquestion-analytics {
+    font-size: 0.2em;
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    margin-top: 1.5em;
+}
+
+.qaquestion-analytics .analyze {
+    background-color: white;
+    border-radius: 0.5em;
+    display: flex;
+    width: 21em;
+    height: 7em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #474444;
+}
+
+.qaquestion-analytics .analyze span {
+    font-size: 2.5em;
+    font-weight: 550;
+}
+.qaquestion-analytics .analyze p {
+    font-weight: 550; 
+}
+
+.qaquestion-analytics .poll-analyze {
+    background-color: white;
+    border-radius: 0.5em;
+    display: flex;
+    width: 15em;
+    height: 7em;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #474444;
+    padding: 0 0.7em;
+    margin-right: 1em;
+}
+
+.qaquestion-analytics .poll-analyze span {
+    font-size: 2.5em;
+    font-weight: 550;
+}
+.qaquestion-analytics .poll-analyze p {
+    font-weight: 550; 
+}
