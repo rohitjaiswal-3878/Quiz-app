@@ -1,0 +1,94 @@
+.analytics {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    font-size: 5vw;
+}
+
+.analytics-container {
+    width: 80%;
+    height: 85%;
+    margin-top: 0.8em;
+    overflow-y: auto;
+    text-align: center;
+}
+.analytics-container h1{
+    font-size: 0.57em;
+    font-weight: 550;
+    color: #5076FF;
+    
+}
+
+.analytics-questions table {
+    font-size: 0.2em;
+    width: 100%;
+    margin-top: 3.5em;
+    border-collapse: collapse;
+}
+.analytics-questions table tbody tr th{
+    font-weight: 500;
+}
+
+.analytics-questions table tr#table-heading{
+    color: white;
+    background-color: #5076FF;
+}
+
+.analytics-questions table th:first-child,.analytics-questions table td:first-child {
+    border-radius: 0.7em 0 0 0.7em;
+}
+
+.analytics-questions table td:last-child,
+.analytics-questions table th:last-child {
+  border-radius: 0 0.7em 0.7em 0;
+}
+
+.analytics-questions table th,.analytics-questions table td {
+    padding: 0.55em 0.3em;
+}
+
+
+.analytics-questions table tr:nth-child(even){
+    color: black;
+    background-color: transparent;
+    font-weight: 550;
+}
+
+.analytics-questions table tr:nth-child(odd){
+    color: black;
+    font-weight: 550;
+    background-color: #B3C4FF;
+}
+
+.analytics-questions table td.last-col-table {
+    text-align: left;
+    padding-left: 4em;
+    width: 40%;
+    font-size: 0.85em;
+    text-decoration: underline;
+}
+.analytics-questions table td.last-col-table span{
+    cursor: pointer;
+}
+.analytics-questions table td.last-col-table span:hover{
+    font-size: 1.01em;
+}
+
+
+td div.question-share-delete-edit {
+    height: 1.8em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+td div.question-share-delete-edit img {
+    height: 63%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+td div.question-share-delete-edit img:hover {
+    transform: scale(1.05,1.05);
+}

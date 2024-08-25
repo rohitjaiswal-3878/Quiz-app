@@ -73,6 +73,7 @@ router.get("/impression", authMiddleware, async (req, res, next) => {
         totalImpressions += ele.impression;
         return ele.impression > 10;
       });
+      quizImpressions.sort((a, b) => a.created - b.created);
       filteredImpression.sort((a, b) => b.impression - a.impression);
       res
         .status(200)
@@ -83,7 +84,7 @@ router.get("/impression", authMiddleware, async (req, res, next) => {
   }
 });
 
-// Route to get analytics of quiz.
+// Route to get analytics of particular quiz.
 router.get("/analytics/:id", authMiddleware, async (req, res, next) => {
   try {
     const quizId = req.params.id;

@@ -18,7 +18,7 @@ function TrendingQuiz({ quiz }) {
       <span className="trending-quiz-created-date">
         Created on :{" "}
         {new Date(quiz.created).toLocaleDateString("default", {
-          month: "long",
+          month: "short",
           day: "numeric",
         })}
         ,{" "}
