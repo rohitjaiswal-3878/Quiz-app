@@ -17,4 +17,21 @@ const getQuizAnalytics = async (quizId) => {
   }
 };
 
-export { getQuizAnalytics };
+// Delete quiz
+const deleteQuiz = async (quizId) => {
+  try {
+    const response = await axios.delete(
+      `${process.env.REACT_APP_BACKEND}/quiz/remove/${quizId}`,
+      {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getQuizAnalytics, deleteQuiz };

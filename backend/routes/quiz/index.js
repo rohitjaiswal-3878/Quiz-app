@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 require("dotenv").config();
 const Quiz = require("../../models/Quiz");
+const Result = require("../../models/Result");
 const authMiddleware = require("../../middlewares/authMiddleware");
 
 // Route for creating quiz
@@ -39,6 +40,7 @@ router.delete("/remove/:id", authMiddleware, async (req, res, next) => {
       return res.status(400).json({ message: "Access Forbidden!" });
     }
 
+    const allImpression = await Result.deleteMany({ quizId: id });
     await Quiz.findByIdAndDelete(id);
     res.status(200).json({ message: "Deleted successfully!!" });
   } catch (err) {

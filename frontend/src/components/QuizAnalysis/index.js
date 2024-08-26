@@ -52,7 +52,7 @@ function QuizAnalysis({ setComponents, quiz }) {
       {quizAnalytics.length != 0 ? (
         <div className="quiz-analysis-questions">
           {quizAnalytics.map((ele, index) => {
-            if (ele.attempted) {
+            if (ele.attempted >= 0) {
               return (
                 <QaQuestion
                   key={index}

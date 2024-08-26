@@ -92,3 +92,21 @@ td div.question-share-delete-edit img {
 td div.question-share-delete-edit img:hover {
     transform: scale(1.05,1.05);
 }
+
+.Toastify__toast-container {
+    width: 300px !important;
+    font-size: 14px !important;
+    font-weight: 550;
+}
+
+.confirm-delete {
+    padding: 10px 40px;
+    font-size: 1rem;
+}
+
+.confirm-delete h1{
+    font-size: 2em;
+    padding: 0px 70px;
+    text-align: center;
+    color: #474444;
+}
