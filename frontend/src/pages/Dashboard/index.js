@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import TrendingQuiz from "../../utils/TrendingQuiz";
 import { getAllQuiz, getImpressions } from "../../apis/dashboard";
+import { useOutletContext } from "react-router-dom";
 
 function Dashboard() {
+  const [selected, setSelected] = useOutletContext();
   const [headingData, setHeadingData] = useState({
     quizzes: -1,
     questions: -1,
@@ -28,7 +30,7 @@ function Dashboard() {
         setTrending([...impressionData.filteredImpression]);
       }
     );
-  }, []);
+  }, [selected]);
 
   return (
     <div className="dashboard">

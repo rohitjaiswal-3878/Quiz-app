@@ -11,6 +11,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
+          {/* Authentication route */}
           <Route element={<Authentication />} path="/auth" />
 
           {/* Homepage routes */}
@@ -19,6 +20,7 @@ function App() {
             <Route element={<Analytics />} path="analytics" />
           </Route>
 
+          {/* Test Route */}
           <Route path="/test/:id" element={<TakeTest />}></Route>
 
           {/* default redirect to authentication page. */}

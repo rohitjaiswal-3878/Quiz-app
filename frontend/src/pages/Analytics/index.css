@@ -62,7 +62,7 @@
     background-color: #B3C4FF;
 }
 
-.analytics-questions table td.last-col-table {
+.analytics-questions table td.last-col-table,.analytics-questions table th.last-col-table {
     text-align: left;
     padding-left: 4em;
     width: 40%;
@@ -76,6 +76,9 @@
     font-size: 1.01em;
 }
 
+th.share-delete-edit {
+    width:9%;
+}
 
 td div.question-share-delete-edit {
     height: 1.8em;

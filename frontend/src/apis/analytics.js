@@ -34,4 +34,34 @@ const deleteQuiz = async (quizId) => {
   }
 };
 
-export { getQuizAnalytics, deleteQuiz };
+// Get Quiz by Id
+const getQuizById = async (quizId) => {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_BACKEND}/quiz/fetch/${quizId}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Edit quiz by id
+const editQuizById = async (quiz, quizId) => {
+  try {
+    const response = await axios.patch(
+      `${process.env.REACT_APP_BACKEND}/quiz/edit/${quizId}`,
+      { ...quiz },
+      {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export { getQuizAnalytics, deleteQuiz, getQuizById, editQuizById };

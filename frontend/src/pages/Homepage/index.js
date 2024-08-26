@@ -106,7 +106,7 @@ function Homepage() {
       </div>
       {/* Container */}
       <div className="homepage-body">
-        <Outlet />
+        <Outlet context={[selected, setSelected]} />
         {showModal && createQuiz}
       </div>
     </div>
