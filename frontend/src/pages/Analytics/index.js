@@ -9,8 +9,10 @@ import { useLocation, useOutletContext } from "react-router-dom";
 import { deleteQuiz } from "../../apis/analytics";
 import MyModal from "../../components/MyModal";
 import ModalBtn from "../../utils/ModalBtn";
-import EditQuiz from "../../components/EditQuiz";
 import toast, { Toaster } from "react-hot-toast";
+import QuizEdit from "../../components/QuizEdit";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Analytics() {
   const [selected, setSelected] = useOutletContext();
@@ -68,7 +70,7 @@ function Analytics() {
   const handleEdit = (quiz) => {
     setSelectedQuiz(quiz);
     setComponents({
-      quizzesTable: false,
+      quizzesTable: true,
       quizAnalytics: false,
       deleteConfirm: false,
       editQuiz: true,
@@ -117,6 +119,13 @@ function Analytics() {
           <span>Cancel</span>
         </ModalBtn>
       </div>
+    </MyModal>
+  );
+
+  // Quiz edit section
+  const quizEdit = (
+    <MyModal>
+      <QuizEdit quizId={selQuiz.quizId} onClose={onClose} />
     </MyModal>
   );
 
@@ -208,10 +217,9 @@ function Analytics() {
               },
             }}
           />
+          {components.editQuiz && quizEdit}
+          <ToastContainer />
         </div>
-      ) : components.editQuiz ? (
-        // Quiz edit component
-        <EditQuiz quizId={selQuiz.quizId} setComponents={setComponents} />
       ) : (
         // Quiz Analytics component
         <QuizAnalysis setComponents={setComponents} quiz={selQuiz} />
@@ -221,3 +229,6 @@ function Analytics() {
 }
 
 export default Analytics;
+
+// Quiz edit component
+// <EditQuiz quizId={selQuiz.quizId} setComponents={setComponents} />

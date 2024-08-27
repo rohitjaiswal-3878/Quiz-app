@@ -13,7 +13,7 @@ function QAquiz({
   registerQuiz,
   validationError,
 }) {
-  const [selQuestion, setSelQuestion] = useState(0);
+  let [selQuestion, setSelQuestion] = useState(0);
   const [selOption, setSelOption] = useState(0);
   const [error, setError] = useState("");
   const [totalQuestions, setTotalQuestions] = useState([
@@ -38,7 +38,7 @@ function QAquiz({
 
   // handle create quiz button
   const handleCreateQuiz = (e) => {
-    if (handleError() == 0) {
+    if (handleError(true) == 0) {
       setError("");
       quiz.questions = totalQuestions;
       setCreateQuiz({ ...quiz });
@@ -47,10 +47,12 @@ function QAquiz({
   };
 
   // handle Errors
-  const handleError = () => {
+  const handleError = (lastCheck) => {
     let err = 0;
     let errMsg = "";
-
+    if (lastCheck) {
+      selQuestion = totalQuestions.length - 1;
+    }
     let question = totalQuestions[selQuestion];
     let ansSel = false;
     question.options.forEach((opt, index) => {
@@ -58,18 +60,28 @@ function QAquiz({
 
       if (question.qType == "text" || question.qType == "image") {
         if (opt.imageURL == "" && opt.text == "") {
-          errMsg = "Please fill the options to proceed!";
+          errMsg =
+            "Please fill the options in question no." +
+            (selQuestion + 1) +
+            " to proceed!";
         }
       } else if (question.qType == "text&img") {
         if (opt.imageURL == "" || opt.text == "") {
-          errMsg = "Please fill the options to proceed!";
+          errMsg =
+            "Please fill the options in question no." +
+            (selQuestion + 1) +
+            " to proceed!";
         }
       }
     });
 
     if (question.content == "" || question.qType == "") {
       err++;
-      setError("Please fill all the details before proceeding!");
+      setError(
+        "Please fill all the details in question no." +
+          (selQuestion + 1) +
+          " before proceeding!"
+      );
     } else if (errMsg && ansSel) {
       err++;
       setError(errMsg);
@@ -78,7 +90,11 @@ function QAquiz({
       setError(errMsg);
     } else if (!ansSel && quiz.type == "qa") {
       err++;
-      setError("Please select answer to proceed!");
+      setError(
+        "Please select answer in question no." +
+          (selQuestion + 1) +
+          " to proceed!"
+      );
     }
 
     return err;

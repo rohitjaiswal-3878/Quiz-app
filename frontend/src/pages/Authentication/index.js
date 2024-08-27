@@ -5,9 +5,14 @@ import Signup from "../../components/Signup";
 import Login from "../../components/Login";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Authentication() {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [toggleBtn, setToggleBtn] = useState({
     signUp: true,
     login: false,
@@ -25,6 +30,9 @@ function Authentication() {
 
   // If token exists redirect to dashboard page.
   useEffect(() => {
+    if (location.state != null) {
+      if (location.state.Logout) toast.success("Logged out successfully!");
+    }
     const token = localStorage.getItem("token");
     if (token) {
       navigate("/homepage");
@@ -55,6 +63,7 @@ function Authentication() {
         </div>
         {toggleBtn.signUp ? <Signup setToggleBtn={setToggleBtn} /> : <Login />}
       </div>
+      <ToastContainer />
     </div>
   );
 }

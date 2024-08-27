@@ -97,7 +97,7 @@ function Homepage() {
           <span
             onClick={() => {
               localStorage.removeItem("token");
-              navigate("/auth");
+              navigate("/auth", { state: { Logout: true } });
             }}
           >
             Logout
