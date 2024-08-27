@@ -24,7 +24,6 @@ function Analytics() {
     deleteConfirm: false,
     editQuiz: false,
   });
-  const loadOnce = useRef(true);
 
   // Gets all quizes.
   useEffect(() => {

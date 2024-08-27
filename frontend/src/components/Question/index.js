@@ -19,9 +19,21 @@ function Question({ questions, quizData, resultId }) {
   // handle for shifting to next question
   const handleNext = () => {
     if (ques + 1 == questions.length) {
-      if (!options.includes(true)) {
+      if (!options.includes(true) && seconds != 0) {
         setError("Please select any option to proceed!");
       } else {
+        if (questions[ques].timer == "5" || questions[ques].timer == "10") {
+          if (!options.includes(true)) {
+            let newResult = {
+              name: questions[ques].content,
+              attemped: 1,
+              answered: 0,
+              setOptions: {},
+            };
+            result.questions[ques] = newResult;
+            setResult(result);
+          }
+        }
         setError("");
         setCompleted(true);
         updateResult(resultId, result);
@@ -37,7 +49,7 @@ function Question({ questions, quizData, resultId }) {
       } else if (seconds == 0) {
         let newResult = {
           name: questions[ques].content,
-          attemped: 0,
+          attemped: 1,
           answered: 0,
           setOptions: {},
         };

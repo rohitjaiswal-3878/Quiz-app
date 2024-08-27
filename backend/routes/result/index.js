@@ -110,10 +110,7 @@ router.get("/analytics/:id", authMiddleware, async (req, res, next) => {
         };
 
         allImpressions.forEach((imp, i) => {
-          if (
-            imp.questions[index] &&
-            analytics.ques == imp.questions[index].name
-          ) {
+          if (imp.questions[index]) {
             if (imp.questions[index].attemped) {
               analytics.attempted += 1;
               if (imp.questions[index].answered) {
@@ -138,10 +135,7 @@ router.get("/analytics/:id", authMiddleware, async (req, res, next) => {
         };
 
         allImpressions.forEach((imp, i) => {
-          if (
-            imp.questions[index] &&
-            analytics.ques == imp.questions[index].name
-          ) {
+          if (imp.questions[index]) {
             if (imp.questions[index].attemped) {
               let selOption = imp.questions[index].selectedOption.index + 1;
               analytics[`option${selOption}`] += 1;

@@ -38,13 +38,36 @@ function EditQuiz({ quizId, setComponents }) {
 
   // Handle save button
   const handleSaveButton = () => {
-    editQuizById(quiz, quizId).then((res) => {
-      if (res.status != 200) {
-        toast.error("Something went wrong!");
-      } else {
-        toast.success(res.data.message);
+    let err = 0;
+    quiz.questions.forEach((element) => {
+      if (element.content == "") {
+        err++;
       }
+      element.options.forEach((opt) => {
+        if (opt.text == "" && element.qType == "text") {
+          err++;
+        } else if (opt.imageURL == "" && element.qType == "image") {
+          err++;
+        } else if (
+          (opt.text == "" || opt.imageURL == "") &&
+          element.qType == "text&img"
+        ) {
+          err++;
+        }
+      });
     });
+
+    if (err == 0) {
+      editQuizById(quiz, quizId).then((res) => {
+        if (res.status != 200) {
+          toast.error("Something went wrong!");
+        } else {
+          toast.success(res.data.message);
+        }
+      });
+    } else {
+      toast.error("Input fields cannot be empty!!");
+    }
   };
 
   // Handle back button.

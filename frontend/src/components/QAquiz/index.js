@@ -55,8 +55,15 @@ function QAquiz({
     let ansSel = false;
     question.options.forEach((opt, index) => {
       if (opt.answer == "right" && quiz.type == "qa") ansSel = true;
-      if (opt.imageURL == "" && opt.text == "") {
-        errMsg = "Please fill the options to proceed!";
+
+      if (question.qType == "text" || question.qType == "image") {
+        if (opt.imageURL == "" && opt.text == "") {
+          errMsg = "Please fill the options to proceed!";
+        }
+      } else if (question.qType == "text&img") {
+        if (opt.imageURL == "" || opt.text == "") {
+          errMsg = "Please fill the options to proceed!";
+        }
       }
     });
 
