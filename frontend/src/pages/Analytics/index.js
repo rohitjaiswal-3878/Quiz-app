@@ -5,15 +5,15 @@ import shareIcon from "../../assets/share.png";
 import editIcon from "../../assets/edit.png";
 import { getImpressions } from "../../apis/dashboard";
 import QuizAnalysis from "../../components/QuizAnalysis";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useOutletContext } from "react-router-dom";
 import { deleteQuiz } from "../../apis/analytics";
 import MyModal from "../../components/MyModal";
 import ModalBtn from "../../utils/ModalBtn";
 import EditQuiz from "../../components/EditQuiz";
+import toast, { Toaster } from "react-hot-toast";
 
 function Analytics() {
+  const [selected, setSelected] = useOutletContext();
   const location = useLocation();
   const [allQuizzes, setAllQuizzes] = useState([]);
   const [selQuiz, setSelectedQuiz] = useState({});
@@ -30,7 +30,7 @@ function Analytics() {
     getImpressions().then((data) => {
       setAllQuizzes(data.quizImpressions);
     });
-  }, [components]);
+  }, [components, selected]);
 
   // Handles to go to quiz analytics page
   const handleAnalysisClick = (quiz) => {
@@ -48,7 +48,9 @@ function Analytics() {
     let currentURL = window.location.href.replace(location.pathname, "");
     let link = `${currentURL}/test/${quizId}`;
     await window.navigator.clipboard.writeText(link);
-    toast.success("Link copied to clipboard");
+    toast.success("Link copied to clipboard", {
+      duration: 2000,
+    });
   };
 
   // Handles deleting the quiz.
@@ -88,7 +90,9 @@ function Analytics() {
   const confirmDeleteBtn = () => {
     deleteQuiz(quizDelete).then((data) => {
       if (data.status == 200) {
-        toast.success("Quiz deleted successfully!");
+        toast.success("Quiz deleted successfully!", {
+          duration: 2000,
+        });
         setComponents({
           quizzesTable: true,
           quizAnalytics: false,
@@ -192,7 +196,18 @@ function Analytics() {
             </table>
           </div>
           {components.deleteConfirm && confirmDeleteSection}
-          <ToastContainer limit={4} autoClose={3000} />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              className: "",
+              style: {
+                border: "1px solid #713200",
+                padding: "0.5em",
+                color: "#713200",
+                fontSize: "0.2em",
+              },
+            }}
+          />
         </div>
       ) : components.editQuiz ? (
         // Quiz edit component

@@ -24,9 +24,9 @@ const getQuizData = async (id) => {
     const response = await axios.get(
       `${process.env.REACT_APP_BACKEND}/quiz/fetch/${id}`
     );
-    return response.data;
+    return response;
   } catch (error) {
-    console.log(error);
+    return error.response;
   }
 };
 

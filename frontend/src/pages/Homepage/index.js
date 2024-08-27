@@ -46,7 +46,6 @@ function Homepage() {
 
   // Checks for token
   useEffect(() => {
-    console.log("yes");
     const token = localStorage.getItem("token");
     if (!token) {
       navigate("/auth");

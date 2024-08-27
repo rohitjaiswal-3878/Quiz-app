@@ -8,6 +8,7 @@ import { storeResult } from "../../apis/result";
 function TakeTest() {
   const { id } = useParams();
   const [quizData, setQuizData] = useState({});
+  const [error, setError] = useState();
   const [resultId, setResultId] = useState("");
   const runOnce = useRef(true);
 
@@ -16,18 +17,22 @@ function TakeTest() {
     if (runOnce.current) {
       runOnce.current = false;
       getQuizData(id)
-        .then((data) => {
-          setQuizData(data);
-          storeResult({
-            quizId: data._id,
-            userId: data.userId,
-            type: data.type,
-            questions: [],
-          })
-            .then((data) => {
-              setResultId(data);
+        .then((res) => {
+          if (res.status == 200) {
+            setQuizData(res.data);
+            storeResult({
+              quizId: res.data._id,
+              userId: res.data.userId,
+              type: res.data.type,
+              questions: [],
             })
-            .catch((err) => console.log(err));
+              .then((data) => {
+                setResultId(data);
+              })
+              .catch((err) => console.log(err));
+          } else {
+            setError("404 Not found!");
+          }
         })
         .catch((err) => console.log(err));
     }
@@ -43,8 +48,13 @@ function TakeTest() {
             resultId={resultId}
           />
         </div>
+      ) : error ? (
+        <div className="test-error">
+          <span className="error-404">404</span>
+          <span>Page not found!</span>
+        </div>
       ) : (
-        "Loading..."
+        <span>Loading...</span>
       )}
     </div>
   );
