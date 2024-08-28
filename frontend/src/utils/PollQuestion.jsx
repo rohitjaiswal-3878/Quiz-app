@@ -12,23 +12,31 @@ function PollQuestion({ question, qno, lastQuiz }) {
       <p className="qaquestion">
         Q.{qno} {question.ques}{" "}
       </p>
-      <div className="qaquestion-analytics">
-        <div className="poll-analyze">
-          <span>{question.option1}</span>
-          <p>Option 1</p>
-        </div>
-        <div className="poll-analyze">
-          <span>{question.option2}</span>
-          <p>Option 2</p>
-        </div>
-        <div className="poll-analyze">
-          <span>{question.option3}</span>
-          <p>Option 3</p>
-        </div>
-        <div className="poll-analyze">
-          <span>{question.option4}</span>
-          <p>Option 4</p>
-        </div>
+      <div className="pollquestion-analytics">
+        {question.options.map((option, index) => (
+          <div className="poll-analyze" key={index}>
+            <span className="count">{question[`option${index + 1}`]}</span>
+            <div
+              className="poll-analyze-content"
+              style={{
+                justifyContent: question.qType == "text&img" ? "end" : "",
+              }}
+            >
+              {option.text && <span>{option.text}</span>}
+              {option.imageURL && (
+                <div
+                  className="pollquestion-img"
+                  style={{
+                    width: question.qType == "image" ? "100%" : "",
+                    height: question.qType == "image" ? "80%" : "",
+                  }}
+                >
+                  <img src={option.imageURL} alt="image" />
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

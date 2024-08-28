@@ -128,6 +128,8 @@ router.get("/analytics/:id", authMiddleware, async (req, res, next) => {
       quiz.questions.forEach((question, index) => {
         let analytics = {
           ques: question.content,
+          options: question.options,
+          qType: question.qType,
           option1: 0,
           option2: 0,
           option3: 0,

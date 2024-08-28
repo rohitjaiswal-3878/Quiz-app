@@ -183,23 +183,50 @@
     font-weight: 550; 
 }
 
-.qaquestion-analytics .poll-analyze {
+.pollquestion-analytics {
+    font-size: 0.2em;
+    display: flex;
+    gap: 1em;
+    width: 100%;
+    margin-top: 1.5em;
+}
+.pollquestion-analytics .poll-analyze {
     background-color: white;
     border-radius: 0.5em;
     display: flex;
-    width: 15em;
-    height: 7em;
+    width: 17em;
+    height: 7.2em;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 0.5em;
     color: #474444;
     padding: 0 0.7em;
     margin-right: 1em;
 }
 
-.qaquestion-analytics .poll-analyze span {
+.pollquestion-analytics .poll-analyze span.count {
     font-size: 2.5em;
     font-weight: 550;
 }
-.qaquestion-analytics .poll-analyze p {
+.pollquestion-analytics .poll-analyze .poll-analyze-content {
+    height: 100%;
+    width: 80%;
     font-weight: 550; 
+    display: flex;
+    font-size: 1em;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.pollquestion-img {
+    width: 80%;
+    height: 70%;;
+}
+
+.pollquestion-analytics .poll-analyze div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5em;
 }

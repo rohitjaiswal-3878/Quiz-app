@@ -7,6 +7,7 @@ import { getQuizAnalytics } from "../../apis/analytics";
 
 function QuizAnalysis({ setComponents, quiz }) {
   const [quizAnalytics, setQuizAnalytics] = useState([]);
+  console.log(quizAnalytics);
 
   // Handles back click
   const handleBackClick = () => {
