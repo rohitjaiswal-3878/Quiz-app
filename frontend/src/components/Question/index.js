@@ -16,6 +16,10 @@ function Question({ questions, quizData, resultId }) {
   const [completed, setCompleted] = useState(false);
   const [error, setError] = useState("");
 
+  const [matches, setMatches] = useState(
+    window.matchMedia("(min-width: 670px)").matches
+  );
+
   // handle for shifting to next question
   const handleNext = () => {
     if (ques + 1 == questions.length) {
@@ -85,6 +89,9 @@ function Question({ questions, quizData, resultId }) {
 
   // creates timer
   useEffect(() => {
+    window
+      .matchMedia("(min-width: 670px)")
+      .addEventListener("change", (e) => setMatches(e.matches));
     let interval;
     if (seconds == 0) {
       handleNext();
@@ -129,6 +136,12 @@ function Question({ questions, quizData, resultId }) {
                       questions[ques].qType == "text&img"
                         ? "space-between"
                         : "center",
+                    height:
+                      quizData.type == "poll" &&
+                      !matches &&
+                      questions[ques].qType == "text&img"
+                        ? "150px"
+                        : "",
                   }}
                   onClick={() => handleSelectOption(index)}
                 >
@@ -136,6 +149,13 @@ function Question({ questions, quizData, resultId }) {
                     opt.text
                   ) : questions[ques].qType == "image" ? (
                     <img src={opt.imageURL} alt="image" id="type-image" />
+                  ) : quizData.type == "poll" && !matches ? (
+                    <div className="poll-text-img">
+                      <div className="poll-text">
+                        <span>{opt.text}</span>
+                      </div>
+                      <img src={opt.imageURL} alt="image" id="poll-img" />
+                    </div>
                   ) : (
                     <>
                       <span>{opt.text}</span>
