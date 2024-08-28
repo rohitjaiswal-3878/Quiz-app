@@ -17,7 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 function Analytics() {
   const [selected, setSelected] = useOutletContext();
   const location = useLocation();
-  const [allQuizzes, setAllQuizzes] = useState([]);
+  const [allQuizzes, setAllQuizzes] = useState(-1);
   const [selQuiz, setSelectedQuiz] = useState({});
   const [quizDelete, setQuizDelete] = useState("");
   const [components, setComponents] = useState({
@@ -146,60 +146,78 @@ function Analytics() {
                   <th></th>
                   <th className="last-col-table"></th>
                 </tr>
-                {allQuizzes.length != 0 ? (
-                  allQuizzes.map((quiz, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        {quiz.name.length > 9
-                          ? quiz.name.substring(0, 10) + "..."
-                          : quiz.name}
-                      </td>
-                      <td>
-                        {new Date(quiz.created).toLocaleDateString("default", {
-                          month: "short",
-                          day: "numeric",
-                        })}
-                        ,{" "}
-                        {new Date(quiz.created).toLocaleDateString("default", {
-                          year: "numeric",
-                        })}
-                      </td>
-                      <td>{quiz.impression}</td>
-                      <td>
-                        <div className="question-share-delete-edit">
-                          <img
-                            src={editIcon}
-                            alt="edit"
-                            onClick={() => handleEdit(quiz)}
-                          />
-                          <img
-                            src={deleteIcon}
-                            alt="delete"
-                            onClick={() => handleDelete(quiz.quizId)}
-                          />
-                          <img
-                            src={shareIcon}
-                            alt="share"
-                            onClick={() => handleCopyingLink(quiz.quizId)}
-                          />
-                        </div>
-                      </td>
-                      <td className="last-col-table">
-                        <span onClick={() => handleAnalysisClick(quiz)}>
-                          Question wise Analysis
-                        </span>
-                      </td>
+                {allQuizzes != -1 ? (
+                  allQuizzes.length != 0 ? (
+                    allQuizzes.map((quiz, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          {quiz.name.length > 9
+                            ? quiz.name.substring(0, 10) + "..."
+                            : quiz.name}
+                        </td>
+                        <td>
+                          {new Date(quiz.created).toLocaleDateString(
+                            "default",
+                            {
+                              month: "short",
+                              day: "numeric",
+                            }
+                          )}
+                          ,{" "}
+                          {new Date(quiz.created).toLocaleDateString(
+                            "default",
+                            {
+                              year: "numeric",
+                            }
+                          )}
+                        </td>
+                        <td>{quiz.impression}</td>
+                        <td>
+                          <div className="question-share-delete-edit">
+                            <img
+                              src={editIcon}
+                              alt="edit"
+                              onClick={() => handleEdit(quiz)}
+                            />
+                            <img
+                              src={deleteIcon}
+                              alt="delete"
+                              onClick={() => handleDelete(quiz.quizId)}
+                            />
+                            <img
+                              src={shareIcon}
+                              alt="share"
+                              onClick={() => handleCopyingLink(quiz.quizId)}
+                            />
+                          </div>
+                        </td>
+                        <td className="last-col-table">
+                          <p onClick={() => handleAnalysisClick(quiz)}>
+                            Question wise Analysis
+                          </p>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr
+                      style={{
+                        fontSize: "0.7em",
+                        marginTop: "5px",
+                      }}
+                    >
+                      No quiz present!
                     </tr>
-                  ))
+                  )
                 ) : (
-                  <span
+                  <tr
                     style={{
-                      fontSize: "0.6em",
+                      fontSize: "0.7em",
+                      marginTop: "5px",
                     }}
                   >
-                    No quiz present!
-                  </span>
+                    Loading...
+                  </tr>
                 )}
               </tbody>
             </table>

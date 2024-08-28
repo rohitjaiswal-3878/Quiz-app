@@ -69,10 +69,10 @@
     font-size: 0.85em;
     text-decoration: underline;
 }
-.analytics-questions table td.last-col-table span{
+.analytics-questions table td.last-col-table p{
     cursor: pointer;
 }
-.analytics-questions table td.last-col-table span:hover{
+.analytics-questions table td.last-col-table p:hover{
     font-size: 1.01em;
 }
 

@@ -3,7 +3,7 @@ import "./index.css";
 import { useState, useEffect } from "react";
 import { editQuizById, getQuizById } from "../../apis/analytics";
 import ModalBtn from "../../utils/ModalBtn";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 function QuizEdit({ quizId, onClose }) {
   const [quiz, setQuiz] = useState({});

@@ -277,6 +277,7 @@ function QAquiz({
         </div>
         <span className="qa-questions-limit">Max 5 questions</span>
       </div>
+
       {/* Adding name and type to question */}
       <div className="qa-quiz-name-type">
         <input
@@ -333,6 +334,7 @@ function QAquiz({
           </div>
         </div>
       </div>
+
       {/* Adding options to the question */}
       <div className="qa-quiz-chooses">
         <div className="qa-quiz-add-option">
@@ -446,11 +448,13 @@ function QAquiz({
           </div>
         )}
       </div>
+
       {/* buttons */}
       <ModalBtn onClose={onClose} handleSubmit={handleCreateQuiz}>
         <span>Cancel</span>
         <span>Create Quiz</span>
       </ModalBtn>
+
       {/* Displaying error */}
       <div
         style={{

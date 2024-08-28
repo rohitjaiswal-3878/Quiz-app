@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import MyModal from "../../components/MyModal";
 import CreateQuiz from "../../components/CreateQuiz";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Homepage() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,6 +49,10 @@ function Homepage() {
 
   // Checks for token
   useEffect(() => {
+    if (location.state != null) {
+      if (location.state.login)
+        toast.info(`Welcome ${localStorage.getItem("name")}`);
+    }
     const token = localStorage.getItem("token");
     if (!token) {
       navigate("/auth");
@@ -97,6 +104,7 @@ function Homepage() {
           <span
             onClick={() => {
               localStorage.removeItem("token");
+              localStorage.removeItem("name");
               navigate("/auth", { state: { Logout: true } });
             }}
           >
@@ -109,6 +117,8 @@ function Homepage() {
         <Outlet context={[selected, setSelected]} />
         {showModal && createQuiz}
       </div>
+
+      <ToastContainer newestOnTop={false} />
     </div>
   );
 }

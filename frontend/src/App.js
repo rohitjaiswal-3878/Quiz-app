@@ -5,14 +5,18 @@ import Homepage from "./pages/Homepage";
 import Analytics from "./pages/Analytics";
 import Dashboard from "./pages/Dashboard";
 import TakeTest from "./pages/TakeTest";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <Routes>
+          {/* default redirect to authentication page. */}
+          <Route path="/" element={<Navigate to="/auth" />} />
+
           {/* Authentication route */}
-          <Route element={<Authentication />} path="/auth" />
+          <Route element={<Authentication />} path="/auth" index />
 
           {/* Homepage routes */}
           <Route element={<Homepage />} path="/homepage/">
@@ -23,8 +27,11 @@ function App() {
           {/* Test Route */}
           <Route path="/test/:id" element={<TakeTest />}></Route>
 
-          {/* default redirect to authentication page. */}
-          <Route path="*" element={<Navigate to="/auth" />} />
+          {/* unknow redirect to error page. */}
+          <Route path="*" element={<Navigate to="/error" />} />
+
+          {/* 404 page not found */}
+          <Route path="/error" element={<ErrorPage />} />
         </Routes>
       </div>
     </BrowserRouter>

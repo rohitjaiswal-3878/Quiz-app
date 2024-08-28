@@ -35,7 +35,7 @@ function Authentication() {
     }
     const token = localStorage.getItem("token");
     if (token) {
-      navigate("/homepage");
+      navigate("/homepage/dashboard");
     }
   }, []);
 

@@ -58,10 +58,11 @@ function Login() {
         setRequested(false);
         if (response.status == 200) {
           localStorage.setItem("token", response.headers["auth-token"]);
+          localStorage.setItem("name", response.data.name);
           msg.message = response.data.message;
           msg.color = "green";
           setTimeout(() => {
-            navigate("/homepage/dashboard");
+            navigate("/homepage/dashboard", { state: { login: true } });
           }, 500);
         } else if (response.status == 400) {
           msg.message = response.data.message;
