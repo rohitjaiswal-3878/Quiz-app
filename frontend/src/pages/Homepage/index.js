@@ -5,9 +5,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MyModal from "../../components/MyModal";
 import CreateQuiz from "../../components/CreateQuiz";
+import { useLocation } from "react-router-dom";
 
 function Homepage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [showModal, setShowModal] = useState(false);
   const [selected, setSelected] = useState({
     dashboard: location.pathname == "/homepage/dashboard" ? true : false,
