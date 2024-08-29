@@ -1,21 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// const questionSchema = new Schema({
-//   answered: {
-//     type: String,
-//     required: true,
-//   },
-//   attempted: {
-//     type: String,
-//     required: true,
-//   },
-//   name: {
-//     type: String,
-//     required: true,
-//   },
-// });
-
 const resultSchema = new Schema({
   quizId: {
     type: String,
