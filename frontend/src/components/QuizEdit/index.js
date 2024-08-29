@@ -10,11 +10,13 @@ function QuizEdit({ quizId, onClose }) {
   const [selQuestion, setSelQuestion] = useState(0);
   const [error, setError] = useState();
   const [loader, setLoader] = useState(false);
+  const [resetLoader, setResetLoader] = useState(false);
 
   // Gets initial quiz data.
   function getInitialData() {
     getQuizById(quizId).then((data) => {
       setQuiz(data);
+      setResetLoader(false);
     });
   }
 
@@ -103,9 +105,17 @@ function QuizEdit({ quizId, onClose }) {
                     {index + 1}
                   </li>
                 ))}
-                <button id="quiz-edit-reset" onClick={getInitialData}>
+                <button
+                  id="quiz-edit-reset"
+                  onClick={() => {
+                    setResetLoader(true);
+                    getInitialData();
+                  }}
+                  disabled={resetLoader}
+                >
                   Reset
                 </button>
+                {resetLoader && <div className="loader"></div>}
               </ul>
             </div>
             <span className="qa-questions-limit">Max 5 questions</span>

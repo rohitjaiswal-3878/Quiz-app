@@ -21,6 +21,7 @@ function Analytics() {
   const [allQuizzes, setAllQuizzes] = useState(-1);
   const [selQuiz, setSelectedQuiz] = useState({});
   const [quizDelete, setQuizDelete] = useState("");
+  const [loader, setLoader] = useState(false);
   const [components, setComponents] = useState({
     quizzesTable: true,
     quizAnalytics: false,
@@ -96,11 +97,13 @@ function Analytics() {
 
   // When confirm delete is clicked.
   const confirmDeleteBtn = () => {
+    setLoader(true);
     deleteQuiz(quizDelete).then((data) => {
       if (data.status == 200) {
         toast.success("Quiz deleted successfully!", {
           duration: 2000,
         });
+        setLoader(false);
         setComponents({
           quizzesTable: true,
           quizAnalytics: false,
@@ -116,14 +119,18 @@ function Analytics() {
     <MyModal onClose={onClose}>
       <div className="confirm-delete">
         <h1>Are you confirm you want to delete ?</h1>
-        <ModalBtn
-          handleSubmit={onClose}
-          deleteType={true}
-          onClose={confirmDeleteBtn}
-        >
-          <span>Confirm Delete</span>
-          <span>Cancel</span>
-        </ModalBtn>
+        {loader ? (
+          <div style={{ margin: "10px auto" }} className="loader"></div>
+        ) : (
+          <ModalBtn
+            handleSubmit={onClose}
+            deleteType={true}
+            onClose={confirmDeleteBtn}
+          >
+            <span>Confirm Delete</span>
+            <span>Cancel</span>
+          </ModalBtn>
+        )}
       </div>
     </MyModal>
   );
