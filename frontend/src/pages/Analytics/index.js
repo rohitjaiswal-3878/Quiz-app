@@ -5,7 +5,7 @@ import shareIcon from "../../assets/share.png";
 import editIcon from "../../assets/edit.png";
 import { getImpressions } from "../../apis/dashboard";
 import QuizAnalysis from "../../components/QuizAnalysis";
-import { useLocation, useOutletContext } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import { deleteQuiz } from "../../apis/analytics";
 import MyModal from "../../components/MyModal";
 import ModalBtn from "../../utils/ModalBtn";
@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 function Analytics() {
   const [selected, setSelected] = useOutletContext();
   const location = useLocation();
+  const navigate = useNavigate();
   const [allQuizzes, setAllQuizzes] = useState(-1);
   const [selQuiz, setSelectedQuiz] = useState({});
   const [quizDelete, setQuizDelete] = useState("");
@@ -29,9 +30,14 @@ function Analytics() {
 
   // Gets all quizes.
   useEffect(() => {
-    getImpressions().then((data) => {
-      setAllQuizzes(data.quizImpressions);
-    });
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/auth");
+    } else {
+      getImpressions().then((data) => {
+        setAllQuizzes(data.quizImpressions);
+      });
+    }
   }, [components, selected]);
 
   // Handles to go to quiz analytics page
@@ -202,21 +208,23 @@ function Analytics() {
                   ) : (
                     <tr
                       style={{
-                        fontSize: "0.7em",
+                        fontSize: "0.9em",
                         marginTop: "5px",
+                        color: "gray",
                       }}
                     >
-                      No quiz present!
+                      <td colSpan={6}>No quiz present!</td>
                     </tr>
                   )
                 ) : (
                   <tr
                     style={{
-                      fontSize: "0.7em",
+                      fontSize: "0.8em",
                       marginTop: "5px",
+                      color: "gray",
                     }}
                   >
-                    Loading...
+                    <td colSpan={6}>Loading...</td>
                   </tr>
                 )}
               </tbody>
@@ -247,6 +255,3 @@ function Analytics() {
 }
 
 export default Analytics;
-
-// Quiz edit component
-// <EditQuiz quizId={selQuiz.quizId} setComponents={setComponents} />

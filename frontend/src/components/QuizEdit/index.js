@@ -9,6 +9,7 @@ function QuizEdit({ quizId, onClose }) {
   const [quiz, setQuiz] = useState({});
   const [selQuestion, setSelQuestion] = useState(0);
   const [error, setError] = useState();
+  const [loader, setLoader] = useState(false);
 
   // Gets initial quiz data.
   function getInitialData() {
@@ -67,10 +68,13 @@ function QuizEdit({ quizId, onClose }) {
     });
 
     if (err == 0) {
+      setLoader(true);
       editQuizById(quiz, quizId).then((res) => {
         if (res.status != 200) {
           toast.error("Something went wrong!");
+          setLoader(false);
         } else {
+          setLoader(false);
           toast.success(res.data.message);
           onClose();
         }
@@ -267,10 +271,14 @@ function QuizEdit({ quizId, onClose }) {
           </div>
 
           {/* Cancel and save button */}
-          <ModalBtn onClose={onClose} handleSubmit={handleUpdate}>
-            <span>Cancel</span>
-            <span>Update</span>
-          </ModalBtn>
+          {loader ? (
+            <div style={{ margin: "10px auto" }} className="loader"></div>
+          ) : (
+            <ModalBtn onClose={onClose} handleSubmit={handleUpdate}>
+              <span>Cancel</span>
+              <span>Update</span>
+            </ModalBtn>
+          )}
 
           {/* Error container */}
           {error && (

@@ -136,10 +136,7 @@ function CreateQuiz({ onClose }) {
   const registerQuiz = async () => {
     const response = await saveQuiz(createQuiz);
     if (response.status == 500) {
-      let msg =
-        response.data.err.name +
-        ":" +
-        "Please fill all details in questions before creating the quiz.";
+      let msg = response.data.err.message;
       setErrors(msg);
     } else if (response.status == 200) {
       let currentURL = window.location.href.replace(location.pathname, "");

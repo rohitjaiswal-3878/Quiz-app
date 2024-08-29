@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import TrendingQuiz from "../../utils/TrendingQuiz";
 import { getAllQuiz, getImpressions } from "../../apis/dashboard";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 function Dashboard() {
+  const navigate = useNavigate();
   const [selected, setSelected] = useOutletContext();
   const [headingData, setHeadingData] = useState({
     quizzes: -1,
@@ -15,21 +16,26 @@ function Dashboard() {
 
   // Loads the dashboard heading and trending quiz data.
   useEffect(() => {
-    Promise.all([getAllQuiz(), getImpressions()]).then(
-      ([quizData, impressionData]) => {
-        let questions = 0;
-        quizData.forEach((element) => {
-          questions += element.questions.length;
-        });
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/auth");
+    } else {
+      Promise.all([getAllQuiz(), getImpressions()]).then(
+        ([quizData, impressionData]) => {
+          let questions = 0;
+          quizData.forEach((element) => {
+            questions += element.questions.length;
+          });
 
-        setHeadingData({
-          quizzes: quizData.length,
-          questions,
-          impressions: impressionData.totalImpressions,
-        });
-        setTrending([...impressionData.filteredImpression]);
-      }
-    );
+          setHeadingData({
+            quizzes: quizData.length,
+            questions,
+            impressions: impressionData.totalImpressions,
+          });
+          setTrending([...impressionData.filteredImpression]);
+        }
+      );
+    }
   }, [selected]);
 
   return (

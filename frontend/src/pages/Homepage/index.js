@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
 import "./index.css";
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MyModal from "../../components/MyModal";
 import CreateQuiz from "../../components/CreateQuiz";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 function Homepage() {
   const navigate = useNavigate();
-  const location = useLocation();
   const [showModal, setShowModal] = useState(false);
   const [selected, setSelected] = useState({
     dashboard: location.pathname == "/homepage/dashboard" ? true : false,
@@ -49,10 +45,6 @@ function Homepage() {
 
   // Checks for token
   useEffect(() => {
-    if (location.state != null) {
-      if (location.state.login)
-        toast.info(`Welcome ${localStorage.getItem("name")}`);
-    }
     const token = localStorage.getItem("token");
     if (!token) {
       navigate("/auth");
@@ -117,8 +109,6 @@ function Homepage() {
         <Outlet context={[selected, setSelected]} />
         {showModal && createQuiz}
       </div>
-
-      <ToastContainer newestOnTop={false} />
     </div>
   );
 }

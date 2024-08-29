@@ -13,6 +13,7 @@ function QAquiz({
   registerQuiz,
   validationError,
 }) {
+  const [loader, setLoader] = useState(false);
   let [selQuestion, setSelQuestion] = useState(0);
   const [selOption, setSelOption] = useState(0);
   const [error, setError] = useState("");
@@ -39,6 +40,7 @@ function QAquiz({
   // handle create quiz button
   const handleCreateQuiz = (e) => {
     if (handleError(true) == 0) {
+      setLoader(true);
       setError("");
       quiz.questions = totalQuestions;
       setCreateQuiz({ ...quiz });
@@ -450,10 +452,14 @@ function QAquiz({
       </div>
 
       {/* buttons */}
-      <ModalBtn onClose={onClose} handleSubmit={handleCreateQuiz}>
-        <span>Cancel</span>
-        <span>Create Quiz</span>
-      </ModalBtn>
+      {loader ? (
+        <div style={{ margin: "10px auto" }} className="loader"></div>
+      ) : (
+        <ModalBtn onClose={onClose} handleSubmit={handleCreateQuiz}>
+          <span>Cancel</span>
+          <span>Create Quiz</span>
+        </ModalBtn>
+      )}
 
       {/* Displaying error */}
       <div
