@@ -44,7 +44,7 @@
 
 .quesiton-options .option {
     width: 40.6%;
-    height: 90px;
+    height: 110px;
     cursor: pointer;
     border-radius: 8px;
     background-color: #F0F0F0;
@@ -106,7 +106,7 @@
 .congrats-heading {
     font-size: 1.6rem;
     font-weight: 700;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 .trophy {
     height: 65%;

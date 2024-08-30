@@ -11,9 +11,9 @@
 
 .test-questions {
     box-sizing: border-box;
-    width: 700px;
+    width: 750px;
     max-width: 100vw;
-    height: 410px;
+    height: 450px;
     max-height: 100vh;
     background-color: white;
     border-radius: 1rem;

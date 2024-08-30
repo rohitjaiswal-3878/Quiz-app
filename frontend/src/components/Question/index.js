@@ -125,7 +125,15 @@ function Question({ questions, quizData, resultId }) {
             <h3>{questions[ques].content}</h3>
 
             {/* Question options */}
-            <div className="quesiton-options">
+            <div
+              className="quesiton-options"
+              style={{
+                rowGap:
+                  questions[ques].qType == "text" && matches ? "40px" : "",
+                margin:
+                  questions[ques].qType == "text" && matches ? "20px" : "",
+              }}
+            >
               {questions[ques].options.map((opt, index) => (
                 <span
                   className={options[index] ? "selected option" : "option"}
@@ -141,6 +149,8 @@ function Question({ questions, quizData, resultId }) {
                       !matches &&
                       questions[ques].qType == "text&img"
                         ? "150px"
+                        : questions[ques].qType == "text"
+                        ? "80px"
                         : "",
                   }}
                   onClick={() => handleSelectOption(index)}
