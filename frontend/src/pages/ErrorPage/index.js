@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 
+// 404 error page.
 function ErrorPage() {
   return (
     <div
@@ -47,7 +48,7 @@ function ErrorPage() {
           <span>Logout</span>
         </div>
       </div>
-      {/* Container */}
+      {/* Error Container */}
       <div className="homepage-body">
         <div className="error-body">
           <h1>404</h1>

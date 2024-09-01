@@ -13,10 +13,10 @@ function QAquiz({
   registerQuiz,
   validationError,
 }) {
-  const [loader, setLoader] = useState(false);
-  let [selQuestion, setSelQuestion] = useState(0);
-  const [selOption, setSelOption] = useState(0);
-  const [error, setError] = useState("");
+  const [loader, setLoader] = useState(false); // State to store the loader status.
+  let [selQuestion, setSelQuestion] = useState(0); // State to store the selected question index.
+  const [selOption, setSelOption] = useState(0); // State to store the selected option index.
+  const [error, setError] = useState(""); // State to sore the error.
   const [totalQuestions, setTotalQuestions] = useState([
     {
       qType: "text",
@@ -35,9 +35,9 @@ function QAquiz({
       ],
       timer: "off",
     },
-  ]);
+  ]); // State to store the total questions that are created.
 
-  // handle create quiz button
+  // Handle create quiz button.
   const handleCreateQuiz = (e) => {
     if (handleError(true) == 0) {
       setLoader(true);
@@ -48,18 +48,22 @@ function QAquiz({
     }
   };
 
-  // handle Errors
+  // Handle Errors.
   const handleError = (lastCheck) => {
-    let err = 0;
-    let errMsg = "";
+    let err = 0; // Store error count.
+    let errMsg = ""; // Store error message.
+
+    // Change the selected question to last question.
     if (lastCheck) {
       selQuestion = totalQuestions.length - 1;
     }
+
     let question = totalQuestions[selQuestion];
     let ansSel = false;
+
+    // Checks error for each option.
     question.options.forEach((opt, index) => {
       if (opt.answer == "right" && quiz.type == "qa") ansSel = true;
-
       if (question.qType == "text" || question.qType == "image") {
         if (opt.imageURL == "" && opt.text == "") {
           errMsg =
@@ -77,6 +81,7 @@ function QAquiz({
       }
     });
 
+    // Checks error for question and its type.
     if (question.content == "" || question.qType == "") {
       err++;
       setError(
@@ -102,7 +107,7 @@ function QAquiz({
     return err;
   };
 
-  // handles question selecting
+  // Handles question selecting.
   const handleSelectedQuestion = (index) => {
     setError("");
     validationError("");
@@ -110,7 +115,7 @@ function QAquiz({
     setSelQuestion(index);
   };
 
-  // Handles to add new question
+  // Handles to add new question.
   const handleAddQuestion = (e) => {
     if (totalQuestions.length <= 4 && handleError() == 0) {
       let newQues = {
@@ -137,7 +142,7 @@ function QAquiz({
     }
   };
 
-  // Handles closing the question
+  // Handles closing the question.
   const handleQuestionClose = (e) => {
     const index = e.target.dataset.index;
     const newQuestions = totalQuestions.filter((ques, i) => i != index);
@@ -198,7 +203,7 @@ function QAquiz({
     setTotalQuestions([...totalQuestions]);
   };
 
-  // handles to add questions details in state.
+  // Handles to add questions details in state.
   const handleQuestionDetails = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -220,7 +225,7 @@ function QAquiz({
     setTotalQuestions([...totalQuestions]);
   };
 
-  // handle timer selection
+  // handle timer selection.
   const handleTimer = (timer) => {
     totalQuestions[selQuestion].timer = timer;
     setTotalQuestions([...totalQuestions]);
@@ -228,7 +233,7 @@ function QAquiz({
 
   return (
     <div className="qa-quiz-container">
-      {/* creating new questions */}
+      {/* creating new questions. */}
       <div className="qa-quiz-heading">
         <div className="qa-no-of-questions">
           <ul className="qa-questions">
@@ -280,7 +285,7 @@ function QAquiz({
         <span className="qa-questions-limit">Max 5 questions</span>
       </div>
 
-      {/* Adding name and type to question */}
+      {/* Adding name and type to question. */}
       <div className="qa-quiz-name-type">
         <input
           type="text"
@@ -337,7 +342,7 @@ function QAquiz({
         </div>
       </div>
 
-      {/* Adding options to the question */}
+      {/* Adding options to the question. */}
       <div className="qa-quiz-chooses">
         <div className="qa-quiz-add-option">
           {totalQuestions[selQuestion].options.map((opt, index) => {
@@ -451,7 +456,7 @@ function QAquiz({
         )}
       </div>
 
-      {/* buttons */}
+      {/* Buttons */}
       {loader ? (
         <div style={{ margin: "10px auto" }} className="loader"></div>
       ) : (
@@ -461,7 +466,7 @@ function QAquiz({
         </ModalBtn>
       )}
 
-      {/* Displaying error */}
+      {/* Displaying error. */}
       <div
         style={{
           color: "red",

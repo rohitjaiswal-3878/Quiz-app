@@ -6,9 +6,9 @@ import backIcon from "../../assets/back.png";
 import { getQuizAnalytics } from "../../apis/analytics";
 
 function QuizAnalysis({ setComponents, quiz }) {
-  const [quizAnalytics, setQuizAnalytics] = useState([]);
+  const [quizAnalytics, setQuizAnalytics] = useState([]); // Stores the quiz analytics.
 
-  // Handles back click
+  // Handles back click.
   const handleBackClick = () => {
     setComponents({
       quizzesTable: true,
@@ -23,13 +23,15 @@ function QuizAnalysis({ setComponents, quiz }) {
 
   return (
     <div className="quiz-analysis-container">
+      {/* Back button. */}
       <img
         src={backIcon}
         alt="back icon"
         id="analysis-back-icon"
         onClick={handleBackClick}
       />
-      {/* quiz name, created at, and impression */}
+
+      {/* Quiz name, created at, and impression. */}
       <div className="quiz-analysis-heading">
         <span className="quiz-name">{quiz.name} Question Analysis</span>
         <p className="date-impression">
@@ -48,7 +50,7 @@ function QuizAnalysis({ setComponents, quiz }) {
         </p>
       </div>
 
-      {/* All the questions and their analytics */}
+      {/* All the questions and their analytics. */}
       {quizAnalytics.length != 0 ? (
         <div className="quiz-analysis-questions">
           {quizAnalytics.map((ele, index) => {

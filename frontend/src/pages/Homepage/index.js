@@ -10,14 +10,14 @@ import { useLocation } from "react-router-dom";
 function Homepage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false); // State to store modal in quiz creation.
   const [selected, setSelected] = useState({
     dashboard: location.pathname == "/homepage/dashboard" ? true : false,
     analytics: location.pathname == "/homepage/analytics" ? true : false,
     createQuiz: false,
-  });
+  }); // State to store the current route.
 
-  // Handles button click
+  // Handles button click.
   const handleButtonClick = (e) => {
     const text = e.target.innerText;
 
@@ -45,7 +45,7 @@ function Homepage() {
     }
   };
 
-  // Checks for token
+  // Checks for token.
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -53,7 +53,7 @@ function Homepage() {
     }
   }, []);
 
-  // Quiz modal
+  // Quiz modal.
   const onClose = () => {
     setShowModal(false);
     setSelected({

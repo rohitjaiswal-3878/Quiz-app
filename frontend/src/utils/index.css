@@ -186,15 +186,15 @@
 .pollquestion-analytics {
     font-size: 0.2em;
     display: flex;
-    gap: 1em;
-    width: 100%;
+    gap: 0.9em;
+    width: 105%;
     margin-top: 1.5em;
 }
 .pollquestion-analytics .poll-analyze {
     background-color: white;
     border-radius: 0.5em;
     display: flex;
-    width: 24%;
+    width: 22%;
     height: 7.2em;
     align-items: center;
     justify-content: center;

@@ -1,5 +1,6 @@
 import React from "react";
 
+// Q&A question in quiz test.
 function QaQuestion({ question, qno, lastQuiz }) {
   return (
     <div

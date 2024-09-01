@@ -15,20 +15,19 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Analytics() {
-  const [selected, setSelected] = useOutletContext();
+  const [selected, setSelected] = useOutletContext(); // Comes from Homepage.
   const location = useLocation();
   const navigate = useNavigate();
-  const [allQuizzes, setAllQuizzes] = useState(-1);
-  const [selQuiz, setSelectedQuiz] = useState({});
-  const [quizDelete, setQuizDelete] = useState("");
-  const [deleteLoader, setDeleteLoader] = useState(false);
-  const [tableLoaderm, setTableLoader] = useState(false);
+  const [allQuizzes, setAllQuizzes] = useState(-1); // State to store all quizes.
+  const [selQuiz, setSelectedQuiz] = useState({}); // State to store selected quiz.
+  const [quizDelete, setQuizDelete] = useState(""); // State to store the id of quiz getting deleted.
+  const [deleteLoader, setDeleteLoader] = useState(false); // State to store loader status of deletion.
   const [components, setComponents] = useState({
     quizzesTable: true,
     quizAnalytics: false,
     deleteConfirm: false,
     editQuiz: false,
-  });
+  }); // State to store the components state to be shown.
 
   // Gets all quizes.
   useEffect(() => {
@@ -42,7 +41,7 @@ function Analytics() {
     }
   }, [components, selected]);
 
-  // Handles to go to quiz analytics page
+  // Handles to go to quiz analytics page.
   const handleAnalysisClick = (quiz) => {
     setSelectedQuiz(quiz);
     setComponents({
@@ -53,7 +52,7 @@ function Analytics() {
     });
   };
 
-  // Handles copying the quiz test link
+  // Handles copying the quiz test link.
   const handleCopyingLink = async (quizId) => {
     let currentURL = window.location.href.replace(location.pathname, "");
     let link = `${currentURL}/test/${quizId}`;
@@ -74,7 +73,7 @@ function Analytics() {
     });
   };
 
-  // Handles Quiz edit
+  // Handles Quiz edit.
   const handleEdit = (quiz) => {
     setSelectedQuiz(quiz);
     setComponents({
@@ -85,7 +84,7 @@ function Analytics() {
     });
   };
 
-  // function to close modal.
+  // Function to close modal.
   const onClose = () => {
     setQuizDelete("");
     setComponents({
@@ -104,8 +103,20 @@ function Analytics() {
         toast.success("Quiz deleted successfully!", {
           duration: 2000,
         });
+        // Updating the quiz.
+        getImpressions().then((data) => {
+          setAllQuizzes(data.quizImpressions);
+          setDeleteLoader(false);
+          setComponents({
+            quizzesTable: true,
+            quizAnalytics: false,
+            deleteConfirm: false,
+            editQuiz: false,
+          });
+        });
+      } else {
         setDeleteLoader(false);
-        setAllQuizzes(-1);
+        toast.error(data.data.message);
         setComponents({
           quizzesTable: true,
           quizAnalytics: false,
@@ -116,7 +127,7 @@ function Analytics() {
     });
   };
 
-  // Confirm delete section
+  // Confirm delete section.
   const confirmDeleteSection = (
     <MyModal>
       <div className="confirm-delete">
@@ -137,7 +148,7 @@ function Analytics() {
     </MyModal>
   );
 
-  // Quiz edit section
+  // Quiz edit section.
   const quizEdit = (
     <MyModal>
       <QuizEdit quizId={selQuiz.quizId} onClose={onClose} />

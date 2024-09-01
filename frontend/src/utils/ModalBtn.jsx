@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 
+// Modal buttons
 function ModalBtn({ onClose, handleSubmit, children, deleteType }) {
   return (
     <div className="quiz-buttons">

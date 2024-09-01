@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./index.css";
+//import "./index.css";
 import { editQuizById, getQuizById } from "../../apis/analytics";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import backIcon from "../../assets/back.png";
+
+// This component is not in use currently!!!!
 
 function EditQuiz({ quizId, setComponents }) {
   const [quiz, setQuiz] = useState({});

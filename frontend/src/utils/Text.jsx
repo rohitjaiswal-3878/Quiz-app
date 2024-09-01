@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import deleteIcon from "../assets/delete.png";
 
+// Option of a question while creation
 function Text({
   isQa,
   handleOptionInput,

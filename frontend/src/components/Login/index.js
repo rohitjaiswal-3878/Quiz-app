@@ -9,25 +9,25 @@ function Login() {
   const [loginMessage, setLoginMessage] = useState({
     message: "",
     color: "",
-  });
-  const [requested, setRequested] = useState(false);
+  }); // State to store messages and color of those.
+  const [requested, setRequested] = useState(false); // State to store the requested status.
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-  });
+  }); // State to store the form Data.
   const [errors, setErrors] = useState({
     email: "",
     password: "",
-  });
+  }); // State to store the error.
 
-  // Handle form input
+  // Handle form input.
   const handleFormInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
   };
 
-  // handle form submit
+  // Handle form submit.
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     let err = 0;
@@ -85,6 +85,7 @@ function Login() {
 
   return (
     <div className="login-container">
+      {/* Login input */}
       <form onSubmit={handleFormSubmit}>
         <table>
           <tbody>
@@ -152,6 +153,7 @@ function Login() {
           )}
         </button>
       </form>
+
       {/* Message */}
       <div
         className="login-message"

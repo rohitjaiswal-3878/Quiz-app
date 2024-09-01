@@ -15,18 +15,18 @@ function CreateQuiz({ onClose }) {
     name: "",
     type: "",
     questions: [],
-  });
-  const [quizLink, setQuizLink] = useState("");
-  const [errors, setErrors] = useState("");
-  const [createQuizErrors, setCreateQuizErrors] = useState("");
+  }); // State to store the quiz.
+  const [quizLink, setQuizLink] = useState(""); // State to store the quiz link.
+  const [errors, setErrors] = useState(""); // State to store the error of server side.
+  const [createQuizErrors, setCreateQuizErrors] = useState(""); // State to store the error of quiz creation.
   const [showQuizModals, setShowQuizModals] = useState({
     qaQuiz: false,
     pollQuiz: false,
     cQuiz: true,
     complete: false,
-  });
+  }); // State to store which modal should be shown.
 
-  // handle input change.
+  // Handle input change.
   const handleChange = (e) => {
     if (e.target.name || e.target.value) {
       setCreateQuiz({ ...createQuiz, name: e.target.value });
@@ -35,7 +35,7 @@ function CreateQuiz({ onClose }) {
     }
   };
 
-  // handle continue button
+  // Handle continue button.
   const handleSubmit = (e) => {
     let err = 0;
 
@@ -132,14 +132,14 @@ function CreateQuiz({ onClose }) {
     </>
   );
 
-  // handle api request to create quiz
+  // Handle api request to create quiz.
   const registerQuiz = async () => {
     const response = await saveQuiz(createQuiz);
     if (response.status == 500) {
       let msg = response.data.err.message;
       setErrors(msg);
     } else if (response.status == 200) {
-      let currentURL = window.location.href.replace(location.pathname, "");
+      let currentURL = window.location.href.replace(location.pathname, ""); // Copying link to clipboard.
       let link = `${currentURL}/test/${response.data.newQuiz._id}`;
       setQuizLink(link);
       setErrors("");
@@ -151,7 +151,8 @@ function CreateQuiz({ onClose }) {
       });
     }
   };
-  // JSX for adding questions in quiz. (Q & A)
+
+  // JSX for adding questions in quiz. (Q & A).
   const qaQuestions = (
     <QAquiz
       onClose={onClose}
@@ -162,7 +163,7 @@ function CreateQuiz({ onClose }) {
     />
   );
 
-  // JSX for adding questions in quiz. (Poll)
+  // JSX for adding questions in quiz. (Poll).
   const pollQuestions = (
     <QAquiz
       onClose={onClose}
@@ -173,7 +174,7 @@ function CreateQuiz({ onClose }) {
     />
   );
 
-  // JSX for quiz created message
+  // JSX for quiz created message.
   const completeQuizCreation = (
     <div className="quiz-created">
       <h2>Congrats your Quiz is Published!</h2>
@@ -198,6 +199,7 @@ function CreateQuiz({ onClose }) {
 
   return (
     <div className="create-container">
+      {/* Conditional rendering */}
       {showQuizModals.cQuiz
         ? selectQuizType
         : showQuizModals.qaQuiz
@@ -207,6 +209,8 @@ function CreateQuiz({ onClose }) {
         : showQuizModals.complete
         ? completeQuizCreation
         : ""}
+
+      {/* Error */}
       <span
         style={{
           color: "red",

@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css";
 
+// Poll question in test.
 function PollQuestion({ question, qno, lastQuiz }) {
   return (
     <div

@@ -1,6 +1,7 @@
 import React from "react";
 import impressionIcon from "../assets/impression-icon.png";
 
+// Trending quiz component.
 function TrendingQuiz({ quiz }) {
   return (
     <div className="trending-quiz">

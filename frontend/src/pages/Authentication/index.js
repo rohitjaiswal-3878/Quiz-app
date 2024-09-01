@@ -16,9 +16,9 @@ function Authentication() {
   const [toggleBtn, setToggleBtn] = useState({
     signUp: true,
     login: false,
-  });
+  }); // State to store the view of signup and login component.
 
-  // Handle toggle of signup and login button
+  // Handle toggle of signup and login button.
   const handleToggle = (e) => {
     e.preventDefault();
     if (e.target.innerText == "Sign Up") {
@@ -41,6 +41,7 @@ function Authentication() {
 
   return (
     <div className="authentication">
+      {/* Authentication container */}
       <div className="auth-container">
         <h1>Quizzie</h1>
         <div className="auth-toggle">

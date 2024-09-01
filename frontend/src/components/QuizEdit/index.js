@@ -6,11 +6,11 @@ import ModalBtn from "../../utils/ModalBtn";
 import toast from "react-hot-toast";
 
 function QuizEdit({ quizId, onClose }) {
-  const [quiz, setQuiz] = useState({});
-  const [selQuestion, setSelQuestion] = useState(0);
-  const [error, setError] = useState();
-  const [loader, setLoader] = useState(false);
-  const [resetLoader, setResetLoader] = useState(false);
+  const [quiz, setQuiz] = useState({}); // State to store the quiz data.
+  const [selQuestion, setSelQuestion] = useState(0); // State to store the selected question.
+  const [error, setError] = useState(); // State to store the error.
+  const [loader, setLoader] = useState(false); // State to store the loader status when update is clicked.
+  const [resetLoader, setResetLoader] = useState(false); // State to store the loader status of reset button.
 
   // Gets initial quiz data.
   function getInitialData() {
@@ -25,7 +25,7 @@ function QuizEdit({ quizId, onClose }) {
     getInitialData();
   }, []);
 
-  // handle the input changes.
+  // Handle the input changes.
   const handleInputChange = (e, oIndex) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -42,7 +42,7 @@ function QuizEdit({ quizId, onClose }) {
     setQuiz({ ...quiz });
   };
 
-  // Handle question selection
+  // Handle question selection.
   const handleQuestionSelection = (i) => {
     setSelQuestion(i);
     setError("");
@@ -51,6 +51,8 @@ function QuizEdit({ quizId, onClose }) {
   // Handle update quiz
   const handleUpdate = () => {
     let err = 0;
+
+    // Checks for error.
     quiz.questions.forEach((element) => {
       if (element.content == "") {
         err++;

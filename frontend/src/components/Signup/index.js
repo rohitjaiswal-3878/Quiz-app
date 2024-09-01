@@ -8,30 +8,30 @@ function Signup({ setToggleBtn }) {
   const [sigupMessage, setSignupMessage] = useState({
     message: "",
     color: "",
-  });
-  const [requested, setRequested] = useState(false);
+  }); // State to store the message and its color.
+  const [requested, setRequested] = useState(false); // State to store the requested status.
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
-  });
+  }); // State to store the form data.
 
   const [errors, setErrors] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
-  });
+  }); // State to store the error data.
 
-  // Handles form input
+  // Handles form input..
   const handleFormChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Handle form submit
+  // Handle form submit.
   const handleSubmit = async (e) => {
     e.preventDefault();
     let err = 0;

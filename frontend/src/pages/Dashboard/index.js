@@ -6,12 +6,12 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 
 function Dashboard() {
   const navigate = useNavigate();
-  const [selected, setSelected] = useOutletContext();
+  const [selected, setSelected] = useOutletContext(); // This comes from homepage.
   const [headingData, setHeadingData] = useState({
     quizzes: -1,
     questions: -1,
     impressions: -1,
-  });
+  }); // State to store the heading data of dashboard.
   const [trending, setTrending] = useState([]);
 
   // Loads the dashboard heading and trending quiz data.
@@ -40,6 +40,7 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
+      {/* Dashboard container */}
       <div className="dashboard-container">
         {/* total quizzes, questions and impressions */}
         <div className="dashboard-heading">

@@ -4,25 +4,27 @@ import trophy from "../../assets/trophy.png";
 import { updateResult } from "../../apis/result";
 
 function Question({ questions, quizData, resultId }) {
-  const [ques, setQues] = useState(0);
-  const [seconds, setSeconds] = useState(questions[ques].timer);
-  const [options, setOptions] = useState([false, false, false, false]);
+  const [ques, setQues] = useState(0); // State to store current question.
+  const [seconds, setSeconds] = useState(questions[ques].timer); // State to store the seconds of particular question.
+  const [options, setOptions] = useState([false, false, false, false]); // State to store option selected status.
   const [result, setResult] = useState({
     quizId: quizData._id,
     userId: quizData.userId,
     type: quizData.type,
     questions: [],
-  });
-  const [completed, setCompleted] = useState(false);
-  const [error, setError] = useState("");
+  }); // State to store the result.
+  const [completed, setCompleted] = useState(false); // State to store the quiz completion status.
+  const [error, setError] = useState(""); // State to store the error.
 
   const [matches, setMatches] = useState(
     window.matchMedia("(min-width: 670px)").matches
-  );
+  ); // State to store the windows width matches.
 
-  // handle for shifting to next question
+  // Handle for shifting to next question.
   const handleNext = () => {
+    // If it is last question
     if (ques + 1 == questions.length) {
+      // For question without timer.
       if (!options.includes(true) && seconds != 0) {
         setError("Please select any option to proceed!");
       } else {
@@ -70,7 +72,7 @@ function Question({ questions, quizData, resultId }) {
     }
   };
 
-  // handle select option
+  // Handle select option.
   const handleSelectOption = (i) => {
     let newOptions = [false, false, false, false];
     newOptions[i] = true;
@@ -87,11 +89,12 @@ function Question({ questions, quizData, resultId }) {
     setOptions(newOptions);
   };
 
-  // creates timer
+  // Sets timer to question.
   useEffect(() => {
     window
       .matchMedia("(min-width: 670px)")
       .addEventListener("change", (e) => setMatches(e.matches));
+
     let interval;
     if (seconds == 0) {
       handleNext();
